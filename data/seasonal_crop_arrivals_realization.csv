@@ -1,0 +1,13 @@
+Month,Crop_Category,Commodity_Example,Arrival_Volume_Index,Price_Realization_Index,Season_Phase_Description
+October,Kharif,Paddy/Soyabean,85,60,Peak Harvest Arrivals (Glut)
+November,Kharif,Paddy/Soyabean,100,55,Peak Harvest Arrivals (Glut)
+December,Kharif,Paddy/Soyabean,70,75,Post-Harvest Tapering
+January,Kharif,Paddy/Soyabean,40,90,Demand Stabilization
+February,Kharif,Paddy/Soyabean,20,95,Lean Season
+March,Rabi,Onion (Early),50,80,Early Harvest
+April,Rabi,Wheat/Gram/Onion,90,50,Peak Harvest Arrivals (Glut)
+May,Rabi,Wheat/Gram/Onion,100,45,Peak Harvest Arrivals (Glut)
+June,Rabi,Wheat/Gram,60,75,Post-Harvest Tapering
+July,Rabi,Wheat/Gram,30,85,Demand Stabilization
+August,Rabi_Stored,Onion,30,110,Lean Season (Storage Depletion)
+September,Rabi_Stored,Onion,15,140,Peak Lean Season (High Volatility)

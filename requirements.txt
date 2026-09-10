@@ -1,0 +1,4 @@
+# Core KisanSetu runs on Python 3.9+ standard library (http.server, socketserver, sqlite3, json, hashlib)
+# Optional dependencies for MySQL relational database connection & crypto:
+pymysql>=1.1.0
+cryptography>=41.0.0

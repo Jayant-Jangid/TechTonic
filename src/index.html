@@ -1,0 +1,3062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KisanSetu | National Agricultural Commerce & Logistics Portal</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Chart.js CDN for Analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Rozha+One&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/custom.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            hindi: ['"Rozha One"', 'serif']
+          },
+          colors: {
+            agri: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+              950: '#052e16'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- ================= TOP APP BAR & PERSONA SWITCHER ================= -->
+  <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm backdrop-blur-md bg-white/95">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 gap-4">
+        
+        <!-- Brand Logo -->
+        <div class="flex items-center gap-3 cursor-pointer group" onclick="window.app.handleHomeClick()">
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-800 via-emerald-700 to-green-600 flex items-center justify-center text-white shadow-md shadow-emerald-800/25 ring-1 ring-white/20 p-1.5 flex-shrink-0 transition-transform group-hover:scale-105">
+            <svg class="w-7 h-7" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="KisanSetu Official Emblem">
+              <defs>
+                <linearGradient id="ksWheatGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fef08a"/>
+                  <stop offset="60%" stop-color="#fde047"/>
+                  <stop offset="100%" stop-color="#f59e0b"/>
+                </linearGradient>
+                <linearGradient id="ksLeafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ecfdf5"/>
+                  <stop offset="50%" stop-color="#a7f3d0"/>
+                  <stop offset="100%" stop-color="#34d399"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Central Golden Wheat Kernels (Kisan - Agricultural Prosperity) -->
+              <path d="M18 3.5C16.8 5.2 16.8 7.4 18 9C19.2 7.4 19.2 5.2 18 3.5Z" fill="url(#ksWheatGrad)"/>
+              <path d="M14.5 7.6C12.8 8.6 12.4 10.8 13.9 12.2C15.6 11.2 16 9.1 14.5 7.6Z" fill="url(#ksWheatGrad)"/>
+              <path d="M13.8 13C12.1 14 11.7 16.3 13.4 17.7C15.1 16.6 15.5 14.5 13.8 13Z" fill="url(#ksWheatGrad)"/>
+              <path d="M21.5 7.6C23.2 8.6 23.6 10.8 22.1 12.2C20.4 11.2 20 9.1 21.5 7.6Z" fill="url(#ksWheatGrad)"/>
+              <path d="M22.2 13C23.9 14 24.3 16.3 22.6 17.7C20.9 16.6 20.5 14.5 22.2 13Z" fill="url(#ksWheatGrad)"/>
+
+              <!-- Central Upright Golden Stalk -->
+              <path d="M18 9V23" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+
+              <!-- Flourishing Organic Leaves (Growth & Freshness) -->
+              <path d="M18 19C13 14.5 8.5 15.5 7.5 11.5C12 11.5 15 14.5 18 17.2Z" fill="url(#ksLeafGrad)"/>
+              <path d="M18 17C23 12.5 27.5 13.5 28.5 9.5C24 9.5 21 12.5 18 15.2Z" fill="url(#ksLeafGrad)"/>
+
+              <!-- The Highway Bridge Arch ('Setu' - Logistics Connectivity) -->
+              <path d="M6 28C11 21.5 25 21.5 30 28" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>
+              <path d="M9.5 28.5H26.5" stroke="#fde047" stroke-width="1.3" stroke-linecap="round" opacity="0.95"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="text-lg font-black tracking-tight text-slate-900">Kisan<span class="text-emerald-700">Setu</span></span>
+              <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200/80 tracking-wider">Agri-Grid</span>
+            </div>
+            <span class="text-[10px] text-slate-400 font-medium block leading-none mt-0.5">Direct Farm-to-Consumer & Freight</span>
+          </div>
+        </div>
+
+        <!-- ROLE-ISOLATED SESSION STATUS INDICATOR -->
+        <div id="header-session-container" class="hidden md:flex items-center">
+          <!-- Logged Out State Badge -->
+          <div id="header-logged-out-badge" class="flex items-center gap-2 px-3 py-1.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold">
+            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+            <span>Operational Authentication Gateway • Role Isolated</span>
+          </div>
+          <!-- Logged In State Badge (Shows strictly the active user's role) -->
+          <div id="header-logged-in-badge" class="hidden items-center gap-2">
+            <span id="header-role-pill" class="px-3 py-1.5 rounded-xl text-xs font-bold shadow-xs flex items-center gap-1.5 bg-emerald-700 text-white">
+              <i data-lucide="tractor" class="w-3.5 h-3.5"></i> <span id="header-role-title">Farmer Workspace</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Right Tools: Cart, Profile -->
+        <div class="flex items-center gap-3">
+
+          <!-- Consumer Cart Button -->
+          <button type="button" id="header-cart-btn" class="relative p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition" title="View Farm Cart">
+            <i data-lucide="shopping-cart" class="w-5 h-5 text-emerald-800"></i>
+            <span id="cart-count-badge" class="absolute -top-1 -right-1 bg-emerald-600 text-white font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center hidden">
+              0
+            </span>
+          </button>
+
+          <!-- Active Profile Chip (Clickable Operational Profile Trigger) -->
+          <div id="active-user-profile-chip" class="flex items-center gap-1.5 pl-2 border-l border-slate-200">
+            <button type="button" id="open-profile-btn" class="flex items-center gap-2 py-1 px-2 rounded-xl hover:bg-slate-100 border border-transparent hover:border-slate-200 transition text-left cursor-pointer group" title="Click to view full Operational Profile">
+              <div class="w-8 h-8 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-800 flex items-center justify-center font-bold text-xs group-hover:scale-105 transition-transform shadow-xs">
+                <i data-lucide="user" class="w-4 h-4"></i>
+              </div>
+              <div class="hidden lg:block">
+                <div class="flex items-center gap-1">
+                  <span id="profile-user-name" class="text-xs font-bold text-slate-900 leading-tight">Ramesh Patel</span>
+                  <span class="text-[9px] font-bold bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded-full flex items-center gap-0.5">
+                    <i data-lucide="badge-check" class="w-2.5 h-2.5"></i> Profile
+                  </span>
+                </div>
+                <div id="profile-user-role" class="text-[10px] text-emerald-700 font-medium leading-none">Verified Kisan</div>
+              </div>
+            </button>
+            <button type="button" id="logout-btn" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100 transition" title="Switch User / Logout">
+              <i data-lucide="log-out" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN ROUTED CONTENT ================= -->
+  <main class="flex-grow">
+
+    <!-- ================= 1. OPERATIONAL AUTHENTICATION & REGISTRATION GATEWAY ================= -->
+    <section id="portal-unified-login" class="py-10 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+      
+      <!-- Hero Header -->
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold mb-3">
+          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+          National Agricultural Commerce & Transport Grid • SQLite Persistent
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+          Welcome to KisanSetu
+        </h1>
+        <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+          Operational role-isolated access for verified cultivators, commercial buyers, and freight carriers. Sign in to your dedicated portal or register a new verified account below.
+        </p>
+      </div>
+
+      <!-- Main Auth Card Container -->
+      <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden mb-8">
+        
+        <!-- Auth View Switcher Tabs -->
+        <div class="flex border-b border-slate-200 bg-slate-50/80 p-1.5 gap-1.5">
+          <button type="button" id="tab-btn-signin" class="flex-1 py-3 px-4 rounded-2xl text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 bg-white text-emerald-800 shadow-sm border border-slate-200/60">
+            <i data-lucide="lock" class="w-4 h-4 text-emerald-600"></i>
+            <span>Sign In to Portal</span>
+          </button>
+          <button type="button" id="tab-btn-signup" class="flex-1 py-3 px-4 rounded-2xl text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 text-slate-500 hover:text-slate-800 hover:bg-white/60">
+            <i data-lucide="user-plus" class="w-4 h-4 text-slate-500"></i>
+            <span>Create New Account</span>
+          </button>
+        </div>
+
+        <div class="p-6 sm:p-8">
+          
+          <!-- ================= TAB PANE 1: SIGN IN ================= -->
+          <div id="auth-signin-pane" class="space-y-6">
+            
+            <!-- Target Role Selection Tabs (to guide portal entry) -->
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                1. Select Portal Destination:
+              </label>
+              <div class="grid grid-cols-3 gap-2.5">
+                <button type="button" class="auth-role-select-btn px-3 py-2.5 rounded-xl border text-xs font-bold transition flex flex-col sm:flex-row items-center justify-center gap-2 bg-emerald-50 border-emerald-600 text-emerald-900 shadow-xs" data-auth-role="farmer">
+                  <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="tractor" class="w-3.5 h-3.5"></i>
+                  </span>
+                  <span>Farmer Portal</span>
+                </button>
+                <button type="button" class="auth-role-select-btn px-3 py-2.5 rounded-xl border text-xs font-bold transition flex flex-col sm:flex-row items-center justify-center gap-2 bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100" data-auth-role="consumer">
+                  <span class="w-6 h-6 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
+                  </span>
+                  <span>Consumer Hub</span>
+                </button>
+                <button type="button" class="auth-role-select-btn px-3 py-2.5 rounded-xl border text-xs font-bold transition flex flex-col sm:flex-row items-center justify-center gap-2 bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100" data-auth-role="driver">
+                  <span class="w-6 h-6 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="truck" class="w-3.5 h-3.5"></i>
+                  </span>
+                  <span>Truck Driver</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Login Form -->
+            <form id="auth-login-form" class="space-y-4">
+              <input type="hidden" id="login-selected-role" value="farmer">
+              
+              <!-- Alert message box -->
+              <div id="login-alert-banner" class="hidden p-3.5 rounded-xl text-xs font-medium border"></div>
+
+              <div>
+                <label for="login-identifier" class="block text-xs font-bold text-slate-700 mb-1">
+                  Registered Email Address or 10-Digit Mobile:
+                </label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                  </div>
+                  <input type="text" id="login-identifier" required class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition" placeholder="Enter registered email or 10-digit mobile" value="">
+                </div>
+              </div>
+
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label for="login-password" class="block text-xs font-bold text-slate-700">
+                    Account Password:
+                  </label>
+                  <button type="button" id="forgot-password-link" class="text-xs font-semibold text-emerald-700 hover:text-emerald-800 hover:underline transition cursor-pointer">
+                    Forgot Password?
+                  </button>
+                </div>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                    <i data-lucide="key" class="w-4 h-4"></i>
+                  </div>
+                  <input type="password" id="login-password" required class="w-full pl-10 pr-10 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition" placeholder="Enter your account password" value="">
+                  <button type="button" id="toggle-login-password-btn" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 transition">
+                    <i data-lucide="eye" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="pt-2">
+                <button type="submit" id="login-submit-btn" class="w-full py-3 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer">
+                  <i data-lucide="log-in" class="w-4 h-4"></i>
+                  <span>Sign In to Dedicated Portal</span>
+                </button>
+              </div>
+
+              <div class="text-center pt-1">
+                <span class="text-xs text-slate-500">Need a new account? </span>
+                <button type="button" id="switch-to-signup-link" class="text-xs font-bold text-emerald-700 hover:text-emerald-800 hover:underline cursor-pointer">
+                  Create New Account
+                </button>
+              </div>
+            </form>
+
+          </div>
+
+          <!-- ================= TAB PANE 2: CREATE NEW ACCOUNT (SIGN UP) ================= -->
+          <div id="auth-signup-pane" class="hidden space-y-6">
+            
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                1. Select Your Operational Account Role:
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <label class="signup-role-card p-3.5 rounded-2xl border-2 border-emerald-600 bg-emerald-50/50 cursor-pointer transition flex flex-col justify-between">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shadow-xs">
+                      <i data-lucide="tractor" class="w-5 h-5"></i>
+                    </div>
+                    <input type="radio" name="signup-role" value="farmer" checked class="text-emerald-600 focus:ring-emerald-500">
+                  </div>
+                  <div>
+                    <span class="text-xs font-extrabold text-slate-900 block">Farmer / Cultivator</span>
+                    <span class="text-[10px] text-slate-500 block leading-tight mt-0.5">List produce, access MSP pricing floor, and direct buyer orders.</span>
+                  </div>
+                </label>
+
+                <label class="signup-role-card p-3.5 rounded-2xl border-2 border-slate-200 bg-white hover:border-slate-300 cursor-pointer transition flex flex-col justify-between">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shadow-xs">
+                      <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                    </div>
+                    <input type="radio" name="signup-role" value="consumer" class="text-emerald-600 focus:ring-emerald-500">
+                  </div>
+                  <div>
+                    <span class="text-xs font-extrabold text-slate-900 block">Consumer / Buyer</span>
+                    <span class="text-[10px] text-slate-500 block leading-tight mt-0.5">Purchase directly from farms with harvest freshness tracking.</span>
+                  </div>
+                </label>
+
+                <label class="signup-role-card p-3.5 rounded-2xl border-2 border-slate-200 bg-white hover:border-slate-300 cursor-pointer transition flex flex-col justify-between">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shadow-xs">
+                      <i data-lucide="truck" class="w-5 h-5"></i>
+                    </div>
+                    <input type="radio" name="signup-role" value="driver" class="text-emerald-600 focus:ring-emerald-500">
+                  </div>
+                  <div>
+                    <span class="text-xs font-extrabold text-slate-900 block">Truck Driver / Fleet</span>
+                    <span class="text-[10px] text-slate-500 block leading-tight mt-0.5">Accept farm transit loads, set tariffs per-KM, and OTP delivery.</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Registration Form -->
+            <form id="auth-signup-form" class="space-y-4">
+              
+              <!-- Signup Alert Box -->
+              <div id="signup-alert-banner" class="hidden p-3.5 rounded-xl text-xs font-medium border"></div>
+
+              <!-- Base Credentials Grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="signup-name" class="block text-xs font-bold text-slate-700 mb-1">
+                    Full Name / Organization Head: *
+                  </label>
+                  <input type="text" id="signup-name" required placeholder="e.g. Suresh Deshmukh" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                </div>
+                <div>
+                  <label for="signup-email" class="block text-xs font-bold text-slate-700 mb-1">
+                    Email Address: *
+                  </label>
+                  <input type="email" id="signup-email" required placeholder="e.g. suresh.agri@example.com" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-1">
+                    <label for="signup-phone" class="block text-xs font-bold text-slate-700">
+                      10-Digit Mobile Number: *
+                    </label>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">Digits Only</span>
+                  </div>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 font-bold text-xs">
+                      +91
+                    </div>
+                    <input type="tel" id="signup-phone" required pattern="[0-9]{10}" maxlength="10" inputmode="numeric" placeholder="9822334455" class="w-full pl-12 pr-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 font-mono tracking-wider focus:ring-2 focus:ring-emerald-500 focus:bg-white transition" autocomplete="tel">
+                  </div>
+                  <p class="text-[10px] text-slate-400 mt-1">Strictly numeric 10 digits. A live verification OTP will be sent here.</p>
+                </div>
+                <div>
+                  <label for="signup-password" class="block text-xs font-bold text-slate-700 mb-1">
+                    Password (Min 6 chars): *
+                  </label>
+                  <input type="password" id="signup-password" required minlength="6" placeholder="Create a strong password" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                </div>
+                <div class="sm:col-span-2">
+                  <div class="flex items-center justify-between mb-1">
+                    <label for="signup-upi" class="block text-xs font-bold text-slate-700">
+                      Primary UPI ID for Escrow & Direct DBT Settlement:
+                    </label>
+                    <span class="text-[10px] text-slate-400 font-medium">Optional (Auto-generated if empty)</span>
+                  </div>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                      <i data-lucide="wallet" class="w-4 h-4"></i>
+                    </div>
+                    <input type="text" id="signup-upi" placeholder="e.g. name@okhdfcbank or 9822334455@upi" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label for="signup-location" class="block text-xs font-bold text-slate-700">
+                    Primary Base Location / Village / City & State:
+                  </label>
+                  <span class="text-[10px] text-slate-400 font-medium">Optional</span>
+                </div>
+                <input type="text" id="signup-location" placeholder="e.g. Lasalgaon, Nashik District, Maharashtra" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+              </div>
+
+              <!-- DYNAMIC ROLE-SPECIFIC FIELDS -->
+              <div class="pt-3 border-t border-slate-200">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="badge-check" class="w-4 h-4 text-emerald-600"></i>
+                  <span class="text-xs font-bold text-slate-900 uppercase tracking-wider">
+                    2. Role-Specific Accreditations & Infrastructure:
+                  </span>
+                </div>
+
+                <!-- Farmer Specific Fields -->
+                <div id="signup-role-farmer-fields" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="signup-farmer-land" class="block text-xs font-bold text-slate-700 mb-1">
+                      Cultivated Landholding Size: *
+                    </label>
+                    <input type="text" id="signup-farmer-land" placeholder="e.g. 10.5 Acres (4.2 Hectares)" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                  </div>
+                  <div>
+                    <label for="signup-farmer-crop" class="block text-xs font-bold text-slate-700 mb-1">
+                      Primary Cultivated Crops: *
+                    </label>
+                    <input type="text" id="signup-farmer-crop" placeholder="e.g. Sharbati Wheat, Basmati Paddy, Red Onion" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                  </div>
+                  <div>
+                    <label for="signup-farmer-method" class="block text-xs font-bold text-slate-700 mb-1">
+                      Farming Method / Practice:
+                    </label>
+                    <select id="signup-farmer-method" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                      <option value="Certified Organic (NPOP)">Certified Organic (NPOP Standard)</option>
+                      <option value="Natural / Zero-Budget Farming (ZBNF)">Natural / Zero-Budget Farming (ZBNF)</option>
+                      <option value="Conventional High-Yield Standard" selected>Conventional High-Yield Standard</option>
+                      <option value="Good Agricultural Practices (GAP)">Good Agricultural Practices (GAP)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="signup-farmer-irrigation" class="block text-xs font-bold text-slate-700 mb-1">
+                      Primary Irrigation Source:
+                    </label>
+                    <select id="signup-farmer-irrigation" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                      <option value="Drip / Micro-Irrigation (Automated)" selected>Drip / Micro-Irrigation (Automated)</option>
+                      <option value="Canal Gravity Irrigation">Canal Gravity Irrigation</option>
+                      <option value="Borewell / Deep Tube Well">Borewell / Deep Tube Well</option>
+                      <option value="River Lift Irrigation">River Lift Irrigation</option>
+                      <option value="Monsoon Rainfed Only">Monsoon Rainfed Only</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="signup-farmer-soil" class="block text-xs font-bold text-slate-700 mb-1">
+                      Soil Type & Quality Standard:
+                    </label>
+                    <select id="signup-farmer-soil" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                      <option value="Black Cotton Soil (Optimal Moisture Retention)" selected>Black Cotton Soil (Optimal Moisture Retention)</option>
+                      <option value="Alluvial Loamy Soil (Fertile River Basin)">Alluvial Loamy Soil (Fertile River Basin)</option>
+                      <option value="Red & Laterite Soil (Well Drained)">Red & Laterite Soil (Well Drained)</option>
+                      <option value="Sandy Loam">Sandy Loam</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="signup-farmer-govtid" class="block text-xs font-bold text-slate-700 mb-1">
+                      Kisan Credit Card (KCC) / 7-12 Extract ID:
+                    </label>
+                    <input type="text" id="signup-farmer-govtid" placeholder="e.g. KCC-MH-2026-9941 or 7/12 #4421" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                  </div>
+                  <div class="sm:col-span-2">
+                    <label for="signup-farmer-storage" class="block text-xs font-bold text-slate-700 mb-1">
+                      On-Farm Storage Capacity Available:
+                    </label>
+                    <input type="text" id="signup-farmer-storage" placeholder="e.g. 50 MT Ventilated Godown / Cold Storage Bay" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                  </div>
+                </div>
+
+                <!-- Consumer Specific Fields -->
+                <div id="signup-role-consumer-fields" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="signup-consumer-type" class="block text-xs font-bold text-slate-700 mb-1">
+                      Buyer Entity Classification:
+                    </label>
+                    <select id="signup-consumer-type" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                      <option value="Consumer Cooperative Co-op">Consumer Cooperative Co-op</option>
+                      <option value="Retail Supermarket Chain">Retail Supermarket Chain</option>
+                      <option value="HORECA / Restaurant Collective">HORECA / Restaurant Collective</option>
+                      <option value="Agri-Food Processing Mill">Agri-Food Processing Mill</option>
+                      <option value="Direct Institutional Buyer">Direct Institutional Buyer</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="signup-consumer-fssai" class="block text-xs font-bold text-slate-700 mb-1">
+                      FSSAI License / GSTIN (Optional):
+                    </label>
+                    <input type="text" id="signup-consumer-fssai" placeholder="e.g. FSSAI #11522038000491 or GSTIN" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                  </div>
+                  <div class="sm:col-span-2">
+                    <label for="signup-consumer-dock" class="block text-xs font-bold text-slate-700 mb-1">
+                      Receiving Dock / Unloading Warehouse Address:
+                    </label>
+                    <input type="text" id="signup-consumer-dock" placeholder="e.g. Central Receiving Bay 4, APMC Commercial Hub, Pune 411001" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                  </div>
+                </div>
+
+                <!-- Truck Driver Specific Fields -->
+                <div id="signup-role-driver-fields" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="signup-driver-dl" class="block text-xs font-bold text-slate-700 mb-1">
+                      Commercial Driving License (DL) Number:
+                    </label>
+                    <input type="text" id="signup-driver-dl" placeholder="e.g. MH-15-2020008812" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                  </div>
+                  <div>
+                    <label for="signup-driver-rc" class="block text-xs font-bold text-slate-700 mb-1">
+                      Vehicle Registration (RC) Number:
+                    </label>
+                    <input type="text" id="signup-driver-rc" placeholder="e.g. MH-15-EG-8841" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                  </div>
+                  <div>
+                    <label for="signup-driver-vtype" class="block text-xs font-bold text-slate-700 mb-1">
+                      Vehicle Classification:
+                    </label>
+                    <select id="signup-driver-vtype" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                      <option value="10-Wheeler Multi-Axle Truck">10-Wheeler Multi-Axle Truck</option>
+                      <option value="6-Wheeler Medium Duty Truck">6-Wheeler Medium Duty Truck</option>
+                      <option value="Pickup Truck (Tata Ace / Bolero)">Pickup Truck (Tata Ace / Bolero)</option>
+                      <option value="Insulated Cold-Reefer Van">Insulated Cold-Reefer Van</option>
+                      <option value="Tractor-Trailer Agro Carrier">Tractor-Trailer Agro Carrier</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="signup-driver-capacity" class="block text-xs font-bold text-slate-700 mb-1">
+                      Rated Net Payload Capacity:
+                    </label>
+                    <input type="text" id="signup-driver-capacity" placeholder="e.g. 10.0 Tons (100 Quintals)" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                  </div>
+                  <div class="sm:col-span-2">
+                    <label for="signup-driver-corridor" class="block text-xs font-bold text-slate-700 mb-1">
+                      Primary Freight Corridors / Base Depot:
+                    </label>
+                    <input type="text" id="signup-driver-corridor" placeholder="e.g. Nashik - Pune - Mumbai NH-60 Agro Corridor" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition">
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- KYC Confirmation Checkbox -->
+              <div class="pt-2">
+                <label class="flex items-start gap-2.5 cursor-pointer">
+                  <input type="checkbox" required checked class="mt-0.5 rounded text-emerald-600 focus:ring-emerald-500">
+                  <span class="text-xs text-slate-600 leading-relaxed">
+                    I confirm that the submitted details are legally accurate and authorize automated verification against Agricultural Marketing & e-NAM trade standards.
+                  </span>
+                </label>
+              </div>
+
+              <div class="pt-2">
+                <button type="submit" id="signup-submit-btn" class="w-full py-3.5 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer active:scale-98">
+                  <i data-lucide="shield-check" class="w-4 h-4"></i>
+                  <span>Verify Mobile via OTP & Register Account</span>
+                </button>
+              </div>
+
+              <div class="text-center pt-1">
+                <span class="text-xs text-slate-500">Already registered? </span>
+                <button type="button" id="switch-to-signin-link" class="text-xs font-bold text-emerald-700 hover:text-emerald-800 hover:underline cursor-pointer">
+                  Sign In to Portal
+                </button>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Trust Badges & System Features -->
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-center max-w-lg mx-auto">
+          <div class="p-3">
+            <div class="text-emerald-700 font-extrabold text-lg flex items-center justify-center gap-1">
+              <i data-lucide="lock" class="w-4 h-4"></i> Isolated
+            </div>
+            <div class="text-xs text-slate-500 font-medium">Role-Enforced Sessions</div>
+          </div>
+          <div class="p-3">
+            <div class="text-emerald-700 font-extrabold text-lg flex items-center justify-center gap-1">
+              <i data-lucide="shield-check" class="w-4 h-4"></i> SHA-256
+            </div>
+            <div class="text-xs text-slate-500 font-medium">Encrypted Authentication</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= 2. FARMER DASHBOARD ================= -->
+    <section id="portal-farmer-dashboard" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      
+      <div class="flex flex-col lg:flex-row gap-6">
+        
+        <!-- PERSISTENT SIDEBAR NAVIGATION -->
+        <aside class="w-full lg:w-64 flex-shrink-0">
+          <div class="bg-emerald-950 text-white rounded-3xl p-5 shadow-lg sticky top-24">
+            
+            <!-- Farmer Profile Card -->
+            <div class="pb-4 mb-4 border-b border-emerald-900/80">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-800 flex items-center justify-center text-white font-bold text-lg shadow-inner">
+                  🌾
+                </div>
+                <div class="min-w-0">
+                  <h3 id="farmer-sidebar-name" class="font-bold text-sm text-white truncate">Ramesh Patel</h3>
+                  <p id="farmer-sidebar-location" class="text-emerald-300 text-xs truncate">Nashik Agro-Cluster</p>
+                  <span id="farmer-sidebar-id" class="inline-block mt-1 text-[10px] bg-emerald-900/80 text-emerald-200 px-2 py-0.5 rounded-full font-mono border border-emerald-700/50">
+                    ID: MH-NSK-4402
+                  </span>
+                </div>
+              </div>
+
+              <!-- Farmer Logged-in Username Display -->
+              <div class="mt-3 py-2 px-3 rounded-xl bg-emerald-900/60 border border-emerald-800/60 text-emerald-200 text-xs font-semibold text-center truncate">
+                <span id="farmer-sidebar-username">Ramesh Patel</span>
+              </div>
+            </div>
+
+            <!-- Sidebar Navigation Links -->
+            <nav class="space-y-1.5">
+              <button type="button" class="farmer-nav-btn w-full px-3.5 py-2.5 rounded-xl text-xs font-semibold transition flex items-center justify-between bg-emerald-800 text-white shadow-md"
+                data-view="listings">
+                <span class="flex items-center gap-2.5">
+                  <i data-lucide="boxes" class="w-4 h-4 text-emerald-300"></i> Active Listings
+                </span>
+                <span id="farmer-sidebar-crops-count" class="text-[10px] bg-emerald-900 text-emerald-200 px-2 py-0.5 rounded-full font-bold">7 Active Crops</span>
+              </button>
+
+              <button type="button" class="farmer-nav-btn w-full px-3.5 py-2.5 rounded-xl text-xs font-semibold transition flex items-center justify-between text-emerald-100 hover:bg-emerald-800/60"
+                data-view="inbox">
+                <span class="flex items-center gap-2.5">
+                  <i data-lucide="inbox" class="w-4 h-4 text-emerald-400"></i> Order Request Inbox
+                </span>
+                <span id="farmer-inbox-counter" class="text-[10px] bg-amber-500 text-slate-900 px-2 py-0.5 rounded-full font-extrabold animate-pulse">2</span>
+              </button>
+
+              <button type="button" class="farmer-nav-btn w-full px-3.5 py-2.5 rounded-xl text-xs font-semibold transition flex items-center gap-2.5 text-emerald-100 hover:bg-emerald-800/60"
+                data-view="analytics">
+                <i data-lucide="bar-chart-3" class="w-4 h-4 text-emerald-400"></i> Analytical Graphs
+              </button>
+
+              <button type="button" class="farmer-nav-btn w-full px-3.5 py-2.5 rounded-xl text-xs font-semibold transition flex items-center justify-between text-emerald-100 hover:bg-emerald-800/60"
+                data-view="notifications">
+                <span class="flex items-center gap-2.5">
+                  <i data-lucide="bell" class="w-4 h-4 text-emerald-400"></i> Farmer Alerts
+                </span>
+                <span id="farmer-notif-counter" class="text-[10px] bg-emerald-500 text-slate-900 px-2 py-0.5 rounded-full font-extrabold">2</span>
+              </button>
+            </nav>
+
+            <!-- Sidebar Quick Stats Widget -->
+            <div class="mt-6 pt-4 border-t border-emerald-900 text-xs">
+              <div class="text-emerald-400 text-[11px] font-semibold uppercase tracking-wider mb-2">Season Benchmark</div>
+              <div class="bg-emerald-900/60 rounded-xl p-3 space-y-2">
+                <div class="flex justify-between items-center">
+                  <span class="text-emerald-300 text-[11px]">Realized Revenue:</span>
+                  <span id="farmer-sidebar-revenue" class="font-bold text-white">₹5.2 Lakhs</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-emerald-300 text-[11px]">Margin Gain:</span>
+                  <span id="farmer-sidebar-margin" class="font-bold text-emerald-400">+16.4%</span>
+                </div>
+              </div>
+
+              <button type="button" id="reset-demo-btn" class="mt-4 w-full py-2 px-3 text-center text-[11px] text-emerald-300/70 hover:text-emerald-200 border border-emerald-800 hover:border-emerald-700 rounded-lg transition">
+                Reset Demo Data
+              </button>
+            </div>
+
+          </div>
+        </aside>
+
+        <!-- FARMER MAIN DASHBOARD CONTENT PANELS -->
+        <div class="flex-grow min-w-0">
+
+          <!-- PANEL 1: ACTIVE LISTINGS & INTERESTED BUYERS VIEW -->
+          <div id="farmer-view-listings" class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-3xl border border-slate-200 shadow-sm">
+              <div>
+                <h2 class="text-xl font-bold text-slate-900">Active Crop Inventory</h2>
+                <p class="text-xs text-slate-500">Currently active lots available to consumers, wholesale millers, and grocery co-ops.</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button type="button" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5"
+                  onclick="window.farmerController.switchView('add_crop')">
+                  <i data-lucide="plus" class="w-4 h-4"></i> Add New Crop
+                </button>
+              </div>
+            </div>
+
+            <!-- Active Listings Grid -->
+            <div id="farmer-listings-container" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+              <!-- Rendered dynamically by farmer.js -->
+            </div>
+          </div>
+
+          <!-- PANEL 2: CROP ENTRY MODULE (LISTING INPUT FORM & VOICE INTEGRATION) -->
+          <div id="farmer-view-add_crop" class="hidden space-y-6">
+            
+            <!-- Voice Assistant Card -->
+            <div id="voice-assistant-card" class="bg-gradient-to-r from-emerald-900 to-green-950 text-white p-6 rounded-3xl shadow-lg border border-emerald-700/50 relative overflow-hidden">
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                  <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-800/80 text-emerald-200 text-xs font-semibold mb-2">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-emerald-400"></i> AI Voice Assistant
+                  </div>
+                  <h3 class="text-lg font-bold text-white">Hands-Free Voice Listing Tool</h3>
+                  <p id="voice-status-text" class="text-xs text-emerald-200/90 mt-1">Tap the microphone to speak details aloud, or click sample prompt below.</p>
+                </div>
+
+                <!-- Mic Action Button & Waveform -->
+                <div class="flex items-center gap-4">
+                  <div id="voice-wave-visualizer" class="flex items-center gap-1.5 h-8 hidden">
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                  </div>
+
+                  <button type="button" id="voice-mic-btn" class="w-14 h-14 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center shadow-lg transition active:scale-95" title="Click to speak">
+                    <i data-lucide="mic" class="w-7 h-7"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Quick Voice Command Samples -->
+              <div class="mt-4 pt-4 border-t border-emerald-800/80">
+                <span class="text-[11px] text-emerald-300 font-semibold block mb-2">Try voice sample prompts (auto-fills form):</span>
+                <div class="flex flex-wrap gap-2">
+                  <button type="button" class="voice-sample-btn px-2.5 py-1 text-xs rounded-lg bg-emerald-800/60 hover:bg-emerald-700 text-emerald-100 transition border border-emerald-700/60"
+                    data-sample="wheat">
+                    🗣️ "List 50 quintals Sharbati wheat harvested 2 days ago at 2750 rupees Grade A+ organic"
+                  </button>
+                  <button type="button" class="voice-sample-btn px-2.5 py-1 text-xs rounded-lg bg-emerald-800/60 hover:bg-emerald-700 text-emerald-100 transition border border-emerald-700/60"
+                    data-sample="mango">
+                    🗣️ "Add 120 crates Alphonso mangoes harvested 1 day ago at 1850 rupees Grade A+ organic"
+                  </button>
+                  <button type="button" class="voice-sample-btn px-2.5 py-1 text-xs rounded-lg bg-emerald-800/60 hover:bg-emerald-700 text-emerald-100 transition border border-emerald-700/60"
+                    data-sample="tomato">
+                    🗣️ "List 80 crates vine tomatoes harvested yesterday at 480 rupees Grade A organic"
+                  </button>
+                </div>
+              </div>
+
+              <!-- Voice Auto-Fill Success Banner -->
+              <div id="voice-success-banner" class="mt-3 p-2.5 rounded-xl bg-emerald-800 text-emerald-100 text-xs font-semibold flex items-center gap-2 hidden">
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-300"></i>
+                <span id="voice-success-msg"></span>
+              </div>
+            </div>
+
+            <!-- Main Crop Entry Form -->
+            <form id="farmer-crop-form" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+              
+              <div class="border-b border-slate-100 pb-4">
+                <h3 class="text-lg font-bold text-slate-900">Crop Entry Module</h3>
+                <p class="text-xs text-slate-500">Provide detailed lot specs to reach verified consumers, institutional buyers, and processors.</p>
+                
+                <!-- Presets Pill Bar -->
+                <div class="mt-3">
+                  <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-1.5">Quick Auto-Fill Presets</span>
+                  <div id="crop-preset-pills" class="flex flex-wrap gap-2"></div>
+                </div>
+              </div>
+
+              <!-- Section 1: Basic Crop Identification & Category -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="sm:col-span-2">
+                  <label class="block text-xs font-bold text-slate-700 mb-1.5">Crop Name / Variety</label>
+                  <input type="text" id="crop-name-input" required placeholder="e.g. Sharbati Golden Wheat"
+                    class="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1.5">Crop Category</label>
+                  <select id="crop-category-select" class="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none">
+                    <option value="Cereals">Cereals</option>
+                    <option value="Pulses">Pulses</option>
+                    <option value="Fruits">Fruits</option>
+                    <option value="Vegetables">Vegetables</option>
+                    <option value="Spices">Spices</option>
+                    <option value="Oilseeds">Oilseeds</option>
+                    <option value="Cash Crops">Cash Crops</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Section 2: Quantity, Stock & Units -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1.5">Lot Quantity Available</label>
+                  <input type="number" id="crop-quantity-input" required min="1" value="50"
+                    class="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1.5">Measurement Unit</label>
+                  <select id="crop-unit-select" class="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none">
+                    <option value="Quintal">Quintal (100 kg)</option>
+                    <option value="Crates">Crates (25 kg standard)</option>
+                    <option value="Tons">Metric Tons</option>
+                    <option value="Kg">Kilogram</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Section 3: Visual Photo Selection -->
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1.5">Crop Pictures & Visual Verification</label>
+                <div class="flex flex-col sm:flex-row gap-4 items-start">
+                  <!-- Preview Box -->
+                  <div class="w-32 h-32 rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 flex items-center justify-center overflow-hidden flex-shrink-0">
+                    <img id="crop-preview-img" src="" alt="Preview" class="w-full h-full object-cover hidden">
+                    <div id="crop-preview-placeholder" class="text-center text-slate-400 p-2 text-xs">
+                      <i data-lucide="image" class="w-6 h-6 mx-auto mb-1"></i>
+                      <span>No photo</span>
+                    </div>
+                  </div>
+
+                  <!-- Photo Options -->
+                  <div class="flex-grow space-y-2">
+                    <input type="text" id="crop-image-url" placeholder="Paste high-res image URL or pick preset below"
+                      class="w-full text-xs px-3 py-2 rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-emerald-500">
+                    
+                    <span class="text-[11px] text-slate-400 block font-medium">Quick Photo Presets:</span>
+                    <div class="flex flex-wrap gap-2">
+                      <button type="button" class="preset-photo-btn text-xs px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700"
+                        data-url="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=800&q=80">Wheat</button>
+                      <button type="button" class="preset-photo-btn text-xs px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700"
+                        data-url="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=800&q=80">Mango</button>
+                      <button type="button" class="preset-photo-btn text-xs px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700"
+                        data-url="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=800&q=80">Tomatoes</button>
+                      <button type="button" class="preset-photo-btn text-xs px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700"
+                        data-url="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80">Basmati Rice</button>
+                      <button type="button" class="preset-photo-btn text-xs px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700"
+                        data-url="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80">Turmeric</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Section 4: Organic Certification Add-On Toggle -->
+              <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center">
+                      <i data-lucide="leaf" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                      <span class="text-xs font-bold text-slate-900 block">100% Certified Organic Add-On</span>
+                      <span class="text-[11px] text-slate-500">Produce cultivated with zero synthetic fertilizers or pesticides</span>
+                    </div>
+                  </div>
+
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" id="crop-organic-toggle" class="sr-only peer">
+                    <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"></div>
+                  </label>
+                </div>
+
+                <div id="organic-cert-container" class="mt-3 pt-3 border-t border-emerald-200/60 hidden">
+                  <label class="block text-xs font-semibold text-emerald-900 mb-1">NPOP / Jaivik Bharat Certification ID</label>
+                  <input type="text" id="crop-cert-no" placeholder="e.g. NPOP/NAB/0019/MH or JAIVIK-2026-88"
+                    class="w-full text-xs px-3 py-2 rounded-xl border border-emerald-300 bg-white outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+              </div>
+
+              <!-- Section 5: HARVEST TIMELINE (Calculated by days ago) -->
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="calendar" class="w-4 h-4 text-emerald-700"></i>
+                    <label class="text-xs font-bold text-slate-800">Harvest Timeline & Freshness Score</label>
+                  </div>
+                  <span id="harvest-days-display" class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full">
+                    2 days ago
+                  </span>
+                </div>
+
+                <p class="text-xs text-slate-500 mb-3">Adjust how many days ago this batch was harvested from the fields.</p>
+
+                <input type="range" id="harvest-days-ago" min="0" max="14" value="2" step="1" class="w-full h-2 bg-slate-200 rounded-lg cursor-pointer">
+
+                <div class="flex items-center justify-between text-[11px] text-slate-400 mt-1">
+                  <span>Harvested Today (0d)</span>
+                  <span>1 Week ago (7d)</span>
+                  <span>14 Days Max</span>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2">
+                  <div id="harvest-calculated-date" class="font-semibold text-slate-700">
+                    Calculated Harvest Date: 08 Sep 2026
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="w-24 bg-slate-200 rounded-full h-2.5">
+                      <div id="harvest-freshness-meter" class="bg-emerald-500 h-2.5 rounded-full" style="width: 95%;"></div>
+                    </div>
+                    <span id="harvest-freshness-text" class="text-xs font-bold text-emerald-700">95% Peak Quality Index</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Section 6: PRICING & LOCATION TOOL (Mandi Price vs MSP Slider & Radius) -->
+              <div class="p-5 rounded-2xl bg-emerald-50/40 border border-emerald-200 space-y-4">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="map-pin" class="w-4 h-4 text-emerald-700"></i>
+                    <h4 class="text-xs font-bold text-slate-900">Location-Based Radius & Mandi-MSP Pricing</h4>
+                  </div>
+                  <span class="text-xs font-medium text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full">
+                    GPS: Nashik Agro-Cluster
+                  </span>
+                </div>
+
+                <!-- Delivery Radius Slider -->
+                <div>
+                  <div class="flex justify-between items-center text-xs mb-1.5">
+                    <span class="font-semibold text-slate-700">Delivery Service Radius:</span>
+                    <span id="location-radius-display" class="font-bold text-emerald-700 bg-white px-2 py-0.5 rounded border border-emerald-200">75 km</span>
+                  </div>
+                  <input type="range" id="location-radius-slider" min="5" max="200" value="75" step="5" class="w-full h-2 bg-slate-200 rounded-lg cursor-pointer">
+                  <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+                    <span>5 km (Local Mandi)</span>
+                    <span>100 km (Regional Hub)</span>
+                    <span>200 km (Inter-district)</span>
+                  </div>
+                </div>
+
+                <!-- Benchmarks Display -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                  <div class="bg-white p-3 rounded-xl border border-slate-200">
+                    <span class="text-[11px] text-slate-400 block font-medium">Govt MSP Floor</span>
+                    <span id="msp-badge-val" class="text-base font-extrabold text-slate-800">₹2,275</span>
+                    <span class="text-[10px] text-slate-500 block">Guaranteed baseline</span>
+                  </div>
+                  <div class="bg-white p-3 rounded-xl border border-slate-200">
+                    <span class="text-[11px] text-slate-400 block font-medium">Prevailing APMC Mandi</span>
+                    <span id="mandi-badge-val" class="text-base font-extrabold text-blue-700">₹2,420</span>
+                    <span class="text-[10px] text-slate-500 block">Wholesale average</span>
+                  </div>
+                  <div class="bg-white p-3 rounded-xl border border-slate-200 col-span-2 sm:col-span-1">
+                    <span class="text-[11px] text-slate-400 block font-medium">Your Realized Price</span>
+                    <div class="flex items-center gap-1">
+                      <span class="text-xs font-bold text-slate-400">₹</span>
+                      <input type="number" id="crop-price-input" value="2650" class="w-24 text-base font-extrabold text-emerald-700 outline-none border-b border-emerald-400">
+                    </div>
+                    <span id="profit-margin-badge" class="text-[10px] font-semibold text-emerald-700">+9.5% over Mandi</span>
+                  </div>
+                </div>
+
+                <!-- Pricing adjustment slider between MSP and Mandi/Market -->
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1">Adjust Price (from MSP Floor to Premium Market Ceiling):</label>
+                  <input type="range" id="pricing-slider" min="2000" max="3200" value="2650" step="25"
+                    data-msp="2275" data-mandi="2420"
+                    class="w-full h-2 bg-slate-200 rounded-lg cursor-pointer">
+                  <div class="flex justify-between text-[11px] text-slate-500 mt-1">
+                    <span id="slider-min-msp">MSP: ₹2,275</span>
+                    <span id="slider-max-mandi">Market Ceiling: ₹3,200</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Section 7: QUALITY CONTROL & GRADING SYSTEM UI -->
+              <div class="p-5 rounded-2xl bg-white border border-slate-200 space-y-4">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="award" class="w-4 h-4 text-emerald-700"></i>
+                    <h4 class="text-xs font-bold text-slate-900">Quality Control & Produce Grading</h4>
+                  </div>
+                  <span class="text-xs font-medium text-slate-500">Standards compliant with AGMARK</span>
+                </div>
+
+                <input type="hidden" id="selected-grade-input" value="A">
+
+                <!-- Grade Selection Cards -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div class="grade-select-card p-3 rounded-xl border border-slate-200 hover:border-emerald-500 cursor-pointer transition text-center bg-white" data-grade="A+">
+                    <div class="text-xs font-extrabold text-amber-600 bg-amber-50 rounded py-0.5 mb-1">Grade A+</div>
+                    <div class="text-xs font-bold text-slate-800">Export Super</div>
+                    <div class="text-[10px] text-slate-400 mt-0.5">Moisture &lt;10%, 0% foreign</div>
+                  </div>
+
+                  <div class="grade-select-card p-3 rounded-xl border-2 border-emerald-600 bg-emerald-50/70 ring-2 ring-emerald-500 cursor-pointer transition text-center" data-grade="A">
+                    <div class="text-xs font-extrabold text-emerald-700 bg-emerald-100 rounded py-0.5 mb-1">Grade A</div>
+                    <div class="text-xs font-bold text-slate-800">Premium Retail</div>
+                    <div class="text-[10px] text-slate-400 mt-0.5">Moisture &lt;12%, clean luster</div>
+                  </div>
+
+                  <div class="grade-select-card p-3 rounded-xl border border-slate-200 hover:border-emerald-500 cursor-pointer transition text-center bg-white" data-grade="B">
+                    <div class="text-xs font-extrabold text-blue-600 bg-blue-50 rounded py-0.5 mb-1">Grade B</div>
+                    <div class="text-xs font-bold text-slate-800">Standard Mandi</div>
+                    <div class="text-[10px] text-slate-400 mt-0.5">Commercial processing</div>
+                  </div>
+
+                  <div class="grade-select-card p-3 rounded-xl border border-slate-200 hover:border-emerald-500 cursor-pointer transition text-center bg-white" data-grade="C">
+                    <div class="text-xs font-extrabold text-slate-600 bg-slate-100 rounded py-0.5 mb-1">Grade C</div>
+                    <div class="text-xs font-bold text-slate-800">Cattle / Bio-mass</div>
+                    <div class="text-[10px] text-slate-400 mt-0.5">Industrial grade</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Section 8: Description Notes -->
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1.5">Harvest Description & Special Instructions</label>
+                <textarea id="crop-description-input" rows="2" placeholder="e.g. Harvested from nutrient-rich loamy soil. Cleaned, graded, and packed in moisture-sealed gunny bags."
+                  class="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none"></textarea>
+              </div>
+
+              <!-- Submit Action Button -->
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-end gap-3">
+                <button type="button" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-100 text-xs font-semibold transition"
+                  onclick="window.farmerController.switchView('listings')">
+                  Cancel
+                </button>
+                <button type="submit" class="px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs shadow-md transition flex items-center gap-2">
+                  <i data-lucide="check" class="w-4 h-4"></i> Publish Crop Listing to Marketplace
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+          <!-- PANEL 3: ORDER MANAGEMENT (REQUEST INBOX) -->
+          <div id="farmer-view-inbox" class="hidden space-y-6">
+            <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <h2 class="text-xl font-bold text-slate-900">Consumer Order Request Inbox</h2>
+                <p class="text-xs text-slate-500">Review incoming direct orders and consumer price offers. Choose to accept, counter, or decline.</p>
+              </div>
+              <div class="flex items-center gap-2 text-xs">
+                <span class="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 font-bold border border-emerald-200">
+                  Auto-Dispatches Truck Logistics on Acceptance
+                </span>
+              </div>
+            </div>
+
+            <!-- Orders Table Card -->
+            <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
+              <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                  <thead>
+                    <tr class="bg-slate-50 border-b border-slate-200 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                      <th class="p-3.5">Crop & Date</th>
+                      <th class="p-3.5">Buyer Details</th>
+                      <th class="p-3.5">Quantity</th>
+                      <th class="p-3.5">Offered Price</th>
+                      <th class="p-3.5">Total Value</th>
+                      <th class="p-3.5">Status</th>
+                      <th class="p-3.5 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="farmer-orders-table-body" class="divide-y divide-slate-100">
+                    <!-- Rendered by farmer.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL 4: ANALYTICAL GRAPHS VIEW (Simple & Clean for Farmer's Listed Crops) -->
+          <div id="farmer-view-analytics" class="hidden space-y-8">
+            <!-- Header & Overview Banner -->
+            <div class="bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 p-6 rounded-3xl text-white shadow-md relative overflow-hidden">
+              <div class="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                <div>
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <span class="bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 text-[11px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Your Farm Price Intelligence</span>
+                    <span class="bg-amber-500/20 text-amber-200 border border-amber-400/30 text-[11px] font-bold px-2.5 py-0.5 rounded-full">Only Your Listed Crops</span>
+                  </div>
+                  <h2 class="text-2xl font-black tracking-tight">Your Crop Prices & Selling Guide</h2>
+                  <p class="text-xs text-emerald-100/80 max-w-2xl mt-1">
+                    Simple and clear comparison for only the crops you have listed. See exactly how much more money you earn on KisanSetu compared to local Mandi rates and Govt Support Price (MSP).
+                  </p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2 bg-emerald-950/60 p-3 rounded-2xl border border-emerald-700/50 backdrop-blur-sm text-xs">
+                  <div class="text-center px-3 border-r border-emerald-800">
+                    <div id="analytics-crop-count-display" class="text-lg font-black text-amber-300">4 Crops</div>
+                    <div class="text-[10px] text-emerald-200/70">Your Active Listings</div>
+                  </div>
+                  <div class="text-center px-3 border-r border-emerald-800">
+                    <div class="text-lg font-black text-emerald-300">+₹180-375</div>
+                    <div class="text-[10px] text-emerald-200/70">Extra Profit / Qtl</div>
+                  </div>
+                  <div class="text-center px-3">
+                    <div class="text-lg font-black text-cyan-300">100% Direct</div>
+                    <div class="text-[10px] text-emerald-200/70">Zero Middleman Cut</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MODULE 1: PRICE COMPARISON FOR FARMER'S LISTED CROPS -->
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-5">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                    <h3 class="font-extrabold text-slate-900 text-base">1. Price Comparison for Your Listed Crops</h3>
+                  </div>
+                  <p class="text-xs text-slate-500">
+                    Showing your crops: Govt Guaranteed Floor (MSP) vs Local Mandi Wholesale vs Your Direct Price on KisanSetu.
+                  </p>
+                </div>
+                <!-- Clean Color Legend Pills -->
+                <div class="flex flex-wrap items-center gap-2 text-xs">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-blue-50 border border-blue-200 text-blue-800 font-semibold">
+                    <span class="w-3 h-3 rounded-sm bg-blue-600"></span> Govt Minimum Price (MSP)
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 font-semibold">
+                    <span class="w-3 h-3 rounded-sm bg-amber-500"></span> Local Mandi Rate
+                  </span>
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold">
+                    <span class="w-3 h-3 rounded-sm bg-emerald-600"></span> Your KisanSetu Price
+                  </span>
+                </div>
+              </div>
+
+              <!-- Canvas Container -->
+              <div class="relative w-full" style="height: 340px;">
+                <canvas id="chart-farmer-my-crops-price"></canvas>
+              </div>
+
+              <!-- Simple Visual Cards for Farmer's Crops -->
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                    <span>Your Profit Breakdown per Crop</span>
+                  </h4>
+                  <span class="text-[11px] text-slate-400 font-medium">Simple summary in plain rupees</span>
+                </div>
+                <div id="farmer-my-crops-summary-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                  <!-- Rendered dynamically by farmer.js -->
+                </div>
+              </div>
+            </div>
+
+            <!-- MODULE 2: SIMPLE SEASONAL SELLING CALENDAR -->
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-5">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+                    <h3 class="font-extrabold text-slate-900 text-base">2. Best Months to Sell (Selling Calendar)</h3>
+                  </div>
+                  <p class="text-xs text-slate-500">
+                    Know when to hold and when to sell for highest profit. High bars mean higher prices in market.
+                  </p>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-semibold">
+                  <span class="px-2.5 py-1 rounded-lg bg-rose-100 text-rose-800">⚠️ Low Price (Harvest Rush)</span>
+                  <span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-800">💰 Highest Price (Off-Season)</span>
+                </div>
+              </div>
+
+              <!-- Canvas Container -->
+              <div class="relative w-full" style="height: 300px;">
+                <canvas id="chart-farmer-simple-season"></canvas>
+              </div>
+
+              <!-- Simple Easy-To-Understand Advice Cards -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <!-- Low Price Warning Card -->
+                <div class="bg-rose-50/70 p-4 rounded-2xl border border-rose-200 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2 font-bold text-rose-900 text-sm">
+                      <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-600"></i>
+                      <span>When NOT to Sell in a Panic: Nov & May</span>
+                    </div>
+                    <span class="bg-rose-200 text-rose-900 px-2 py-0.5 rounded-full text-[10px] font-extrabold">Market Flood</span>
+                  </div>
+                  <p class="text-xs text-rose-950 leading-relaxed">
+                    During harvest months (<strong>November</strong> for Kharif and <strong>May</strong> for Rabi), lakhs of farmers bring produce to mandis at the same time. Traders drop prices by 30% to 50%.
+                  </p>
+                  <div class="bg-white/80 p-2.5 rounded-xl border border-rose-200 text-[11px] text-rose-800 font-medium">
+                    💡 <strong>Simple Advice:</strong> If you have dry space or village godown, hold your grain or onion for 4 to 6 weeks to avoid selling at a loss.
+                  </div>
+                </div>
+
+                <!-- High Price Profit Card -->
+                <div class="bg-emerald-50/70 p-4 rounded-2xl border border-emerald-200 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2 font-bold text-emerald-900 text-sm">
+                      <i data-lucide="trending-up" class="w-4 h-4 text-emerald-600"></i>
+                      <span>Best Months for Top Price: Aug & Sep</span>
+                    </div>
+                    <span class="bg-emerald-200 text-emerald-900 px-2 py-0.5 rounded-full text-[10px] font-extrabold">+50% Higher Profit</span>
+                  </div>
+                  <p class="text-xs text-emerald-950 leading-relaxed">
+                    By <strong>August and September</strong>, mandi arrivals drop heavily and market demand is peak. Stored crops like onions, pulses, and grains sell for top dollar.
+                  </p>
+                  <div class="bg-white/80 p-2.5 rounded-xl border border-emerald-200 text-[11px] text-emerald-800 font-medium">
+                    💰 <strong>Simple Advice:</strong> Release your stored produce during August–September. Buyers on KisanSetu pay maximum rates during this window.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MODULE 3: TOP BUYER DESTINATIONS -->
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-5">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="w-3 h-3 rounded-full bg-cyan-500"></span>
+                    <h3 class="font-extrabold text-slate-900 text-base">3. Where Can You Sell for Higher Rates?</h3>
+                  </div>
+                  <p class="text-xs text-slate-500">
+                    Buyers in these states pay higher prices for your crops than local village traders.
+                  </p>
+                </div>
+                <div class="text-xs text-slate-500 font-medium flex items-center gap-1.5">
+                  <i data-lucide="truck" class="w-4 h-4 text-emerald-600"></i>
+                  <span>Direct truck transport available on KisanSetu</span>
+                </div>
+              </div>
+
+              <!-- Canvas Container -->
+              <div class="relative w-full" style="height: 280px;">
+                <canvas id="chart-farmer-best-markets"></canvas>
+              </div>
+
+              <!-- Simple Logistics Card -->
+              <div class="p-4 rounded-2xl bg-gradient-to-r from-cyan-50 to-emerald-50 border border-cyan-200/80 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <h4 class="font-bold text-slate-900 mb-0.5">Want to send produce to these higher-paying markets?</h4>
+                  <p class="text-slate-600 leading-relaxed">
+                    KisanSetu verified truck drivers (like Gurpreet Singh) can pick up full truckloads directly from your farm gate and deliver to verified buyers in Gujarat, Andhra Pradesh, and Delhi NCR.
+                  </p>
+                </div>
+                <button type="button" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl transition flex-shrink-0" onclick="window.farmerController.switchView('listings')">
+                  View Your Active Listings
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL 5: TEXT BULLETINS & SMS FEEDS -->
+          <div id="farmer-view-bulletins" class="hidden space-y-6">
+            <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex items-center justify-between">
+              <div>
+                <h2 class="text-xl font-bold text-slate-900">Agri-Bulletins & Agmarknet SMS Feeds</h2>
+                <p class="text-xs text-slate-500">Live official SMS broadcasts from APMC Mandi boards, IMD Weather Bureau, and Ministry of Agriculture.</p>
+              </div>
+            </div>
+
+            <div id="farmer-bulletins-list" class="space-y-3">
+              <!-- Rendered by farmer.js -->
+            </div>
+          </div>
+
+          <!-- PANEL 6: FARMER ROLE NOTIFICATIONS -->
+          <div id="farmer-view-notifications" class="hidden space-y-6">
+            <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                  <h2 class="text-xl font-bold text-slate-900">Farmer Alerts & Activity Feed</h2>
+                </div>
+                <p class="text-xs text-slate-500">Real-time alerts suited specifically for you: buyer order requests, local APMC mandi price changes, truck pickup schedules, and escrow payment deposits.</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button type="button" id="farmer-notif-mark-read-btn" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer">
+                  <i data-lucide="check-check" class="w-3.5 h-3.5"></i> Mark All Read
+                </button>
+                <button type="button" id="farmer-notif-clear-btn" class="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer">
+                  <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Clear
+                </button>
+              </div>
+            </div>
+
+            <div id="farmer-notifications-list" class="space-y-3">
+              <!-- Rendered dynamically by farmer.js -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. CONSUMER DASHBOARD ================= -->
+    <section id="portal-consumer-dashboard" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      
+      <!-- Top Consumer Navigation Tabs -->
+      <div class="flex items-center justify-between border-b border-slate-200 pb-4 mb-6">
+        <div class="flex items-center gap-6">
+          <button type="button" class="consumer-tab-btn text-sm pb-2 border-b-2 border-emerald-600 text-emerald-700 font-bold transition flex items-center gap-2" data-tab="marketplace">
+            <i data-lucide="store" class="w-4 h-4"></i> Farm Marketplace
+          </button>
+          <button type="button" class="consumer-tab-btn text-sm pb-2 border-b-2 border-transparent text-slate-500 hover:text-slate-900 font-semibold transition flex items-center gap-2" data-tab="orders">
+            <i data-lucide="package" class="w-4 h-4"></i> Order History & Tracking
+          </button>
+          <button type="button" class="consumer-tab-btn text-sm pb-2 border-b-2 border-transparent text-slate-500 hover:text-slate-900 font-semibold transition flex items-center gap-2" data-tab="notifications">
+            <i data-lucide="bell" class="w-4 h-4"></i> Buyer Alerts
+            <span id="consumer-notif-counter" class="text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full font-bold">2</span>
+          </button>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="text-xs text-slate-500 hidden sm:flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+            <span>Live Farm Gate Feeds Connected</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW A: MARKETPLACE & SEARCH ENGINE & LIVE FEED -->
+      <div id="consumer-marketplace-view" class="space-y-6">
+        
+        <!-- Live Arrivals Marquee Ticker -->
+        <div class="bg-gradient-to-r from-emerald-800 to-green-900 text-white rounded-2xl px-4 py-2.5 flex items-center gap-3 text-xs shadow-sm overflow-hidden">
+          <span class="bg-emerald-600 px-2 py-0.5 rounded-full font-bold text-[10px] uppercase tracking-wider flex-shrink-0 flex items-center gap-1">
+            <i data-lucide="radio" class="w-3 h-3 text-white"></i> Live Arrivals
+          </span>
+          <div class="truncate font-medium text-emerald-100">
+            🌾 Ramesh Patel listed 45 Qtl Golden Wheat (Nashik) • 🥭 Ratnagiri Alphonso fresh picking today • 🍅 350 Crates Vine Tomatoes ready for dispatch • MSP benchmark active
+          </div>
+        </div>
+
+        <!-- SEARCH ENGINE & FILTER BAR -->
+        <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm space-y-4">
+          
+          <!-- Search Bar -->
+          <div class="relative">
+            <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-4 top-3.5"></i>
+            <input type="text" id="consumer-search-input" placeholder="Search crops (e.g. Sharbati Wheat, Mangoes), farmer name, or regional farm cluster..."
+              class="w-full pl-12 pr-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm focus:bg-white focus:ring-2 focus:ring-emerald-500 outline-none transition">
+          </div>
+
+          <!-- Quick Category Filter Chips -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-1">
+            <button type="button" class="cat-chip-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-emerald-700 text-white" data-cat="all">All Crops</button>
+            <button type="button" class="cat-chip-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200" data-cat="Cereals">Cereals</button>
+            <button type="button" class="cat-chip-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200" data-cat="Pulses">Pulses</button>
+            <button type="button" class="cat-chip-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200" data-cat="Fruits">Fruits</button>
+            <button type="button" class="cat-chip-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200" data-cat="Vegetables">Vegetables</button>
+            <button type="button" class="cat-chip-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200" data-cat="Spices">Spices</button>
+            <button type="button" class="cat-chip-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200" data-cat="Oilseeds">Oilseeds</button>
+            <button type="button" class="cat-chip-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200" data-cat="Cash Crops">Cash Crops</button>
+          </div>
+
+          <!-- Advanced Filter Row: Category, Harvest Timeline, Distance, Organic -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-3 border-t border-slate-100 text-xs">
+            
+            <!-- Category dropdown -->
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Crop Category</label>
+              <select id="consumer-cat-filter" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 outline-none">
+                <option value="all">All Categories</option>
+                <option value="Cereals">Cereals</option>
+                <option value="Pulses">Pulses</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Vegetables">Vegetables</option>
+                <option value="Spices">Spices</option>
+                <option value="Oilseeds">Oilseeds</option>
+                <option value="Cash Crops">Cash Crops</option>
+              </select>
+            </div>
+
+            <!-- Harvest Timeline / Freshness Filter -->
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Harvest Timeline (Freshness)</label>
+              <select id="consumer-harvest-filter" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 outline-none">
+                <option value="14">All Harvest Dates</option>
+                <option value="1">Harvested Today or Yesterday (0-1d)</option>
+                <option value="3">Within Last 3 Days</option>
+                <option value="7">Within Last 7 Days</option>
+              </select>
+            </div>
+
+            <!-- Delivery Distance Radius -->
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <label class="font-bold text-slate-700">Delivery Distance</label>
+                <span id="consumer-distance-display" class="font-bold text-emerald-700">Within 200 km</span>
+              </div>
+              <input type="range" id="consumer-distance-slider" min="10" max="250" value="200" step="10" class="w-full h-2 bg-slate-200 rounded-lg cursor-pointer">
+            </div>
+
+            <!-- Sort By & Organic Checkbox -->
+            <div class="flex items-center justify-between gap-3 pt-4 sm:pt-0">
+              <div class="flex-grow">
+                <label class="block font-bold text-slate-700 mb-1">Sort Listings</label>
+                <select id="consumer-sort-select" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 outline-none">
+                  <option value="freshness">Freshest First (Harvest)</option>
+                  <option value="distance">Nearest Farm First</option>
+                  <option value="price_asc">Price: Low to High</option>
+                  <option value="price_desc">Price: High to Low</option>
+                </select>
+              </div>
+
+              <div class="flex flex-col items-center justify-center pt-3">
+                <label class="font-semibold text-slate-700 text-[11px] mb-1">Organic</label>
+                <input type="checkbox" id="consumer-organic-filter" class="w-5 h-5 text-emerald-600 rounded border-slate-300">
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Result count & Live Listings Grid -->
+        <div class="flex items-center justify-between">
+          <h3 id="search-result-count" class="font-bold text-slate-800 text-sm">Showing fresh farm listings</h3>
+          <span class="text-xs text-slate-400">Direct mandi-escrow payment protection</span>
+        </div>
+
+        <div id="consumer-crop-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Rendered dynamically by consumer.js -->
+        </div>
+
+      </div>
+
+      <!-- VIEW B: ORDER HISTORY TAB -->
+      <!-- VIEW B: ORDER HISTORY & LIVE TRACKING TAB -->
+      <div id="consumer-orders-view" class="hidden space-y-6">
+        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900">Your Agricultural Orders & Live Tracking</h2>
+            <p class="text-xs text-slate-500">Track shipments from farm gate to your doorstep with real-time GPS telemetry and carrier updates.</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200 text-xs">
+              <span class="text-slate-400 block text-[10px]">Total Consignments</span>
+              <span id="consumer-orders-total-stat" class="font-extrabold text-slate-800 text-sm">3 Orders</span>
+            </div>
+            <div class="bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-200 text-xs">
+              <span class="text-emerald-600 block text-[10px]">Active in Transit</span>
+              <span id="consumer-orders-active-stat" class="font-extrabold text-emerald-700 text-sm">1 Active</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE LIVE TRACKING MAP (Assigned Truck Delivery Corridor) -->
+        <div class="bg-white rounded-3xl p-6 border-2 border-emerald-500/80 shadow-md space-y-4" id="consumer-live-map-card">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-bold">
+                <i data-lucide="navigation" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="font-bold text-slate-900 text-sm sm:text-base">Interactive Live Delivery Route & GPS Map</h3>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span> Live GPS Feed
+                  </span>
+                </div>
+                <p class="text-xs text-slate-500">Consignment #ORD-1001 • Carrier: <b class="text-slate-700">Gurpreet Singh</b> (MH-15-EG-4482)</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" id="consumer-map-recenter-btn" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition flex items-center gap-1 border border-slate-200">
+                <i data-lucide="crosshair" class="w-3.5 h-3.5"></i> Center on Truck
+              </button>
+            </div>
+          </div>
+
+          <!-- Real-Time Telemetry Bar -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+              <span class="text-slate-400 block text-[10px]">Current Velocity</span>
+              <span class="font-bold text-emerald-700 text-sm flex items-center gap-1">
+                <i data-lucide="activity" class="w-3.5 h-3.5 text-emerald-600"></i> <span id="consumer-telemetry-speed">15.2 m/s (Steady)</span>
+              </span>
+            </div>
+            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+              <span class="text-slate-400 block text-[10px]">Distance Remaining</span>
+              <span class="font-bold text-slate-800 text-sm flex items-center gap-1">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-blue-600"></i> <span id="consumer-telemetry-distance">45,260 m to Destination</span>
+              </span>
+            </div>
+            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+              <span class="text-slate-400 block text-[10px]">Estimated Arrival</span>
+              <span class="font-bold text-slate-800 text-sm flex items-center gap-1">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-600"></i> <span id="consumer-telemetry-eta">50 mins</span>
+              </span>
+            </div>
+            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+              <span class="text-slate-400 block text-[10px]">Cargo Hold Climate</span>
+              <span class="font-bold text-blue-700 text-sm flex items-center gap-1">
+                <i data-lucide="thermometer" class="w-3.5 h-3.5 text-blue-600"></i> 18.2°C • 62% RH
+              </span>
+            </div>
+          </div>
+
+          <!-- Interactive SVG Map Canvas -->
+          <div class="relative w-full h-64 sm:h-72 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-950 rounded-2xl overflow-hidden border border-slate-700 shadow-inner flex items-center justify-center">
+            
+            <!-- Stylized Road Route SVG -->
+            <svg class="w-full h-full" viewBox="0 0 800 300" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="route-gradient-consumer" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#10b981" />
+                  <stop offset="55%" stop-color="#f59e0b" />
+                  <stop offset="100%" stop-color="#3b82f6" />
+                </linearGradient>
+                <filter id="glow-consumer" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+
+              <!-- Grid backdrop -->
+              <pattern id="grid-consumer" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+              </pattern>
+              <rect width="100%" height="100%" fill="url(#grid-consumer)" />
+
+              <!-- Highway route polyline (Nashik to Pune via Sangamner) -->
+              <path d="M 80 80 Q 240 180, 420 150 T 720 220" fill="none" stroke="rgba(16, 185, 129, 0.2)" stroke-width="12" stroke-linecap="round" />
+              <path id="consumer-route-path" d="M 80 80 Q 240 180, 420 150 T 720 220" fill="none" stroke="url(#route-gradient-consumer)" stroke-width="5" stroke-linecap="round" filter="url(#glow-consumer)" />
+
+              <!-- Waypoint 1: Nashik Origin -->
+              <g transform="translate(80, 80)">
+                <circle r="9" fill="#10b981" />
+                <circle r="15" fill="none" stroke="#10b981" stroke-width="1.5" opacity="0.6" />
+                <text x="0" y="-18" fill="#a7f3d0" font-size="11" font-weight="bold" text-anchor="middle">Point A: Nashik Agro Farm</text>
+                <text x="0" y="24" fill="#94a3b8" font-size="9" text-anchor="middle">Dispatched 08:30 AM</text>
+              </g>
+
+              <!-- Waypoint 2: Ghoti Toll Plaza -->
+              <g transform="translate(240, 150)">
+                <circle r="5" fill="#10b981" />
+                <text x="0" y="-12" fill="#cbd5e1" font-size="10" text-anchor="middle">Ghoti FASTag Toll</text>
+                <text x="0" y="16" fill="#10b981" font-size="8" text-anchor="middle">✓ Auto-Cleared</text>
+              </g>
+
+              <!-- Waypoint 3: Live Truck Position (Chakan Approach / In-Transit) -->
+              <g transform="translate(580, 180)" id="consumer-truck-pin" style="transition: transform 1s linear;">
+                <circle r="18" fill="#f59e0b" opacity="0.3" class="animate-ping" />
+                <circle r="12" fill="#f59e0b" stroke="#ffffff" stroke-width="2" />
+                <text x="0" y="4" fill="#ffffff" font-size="10" font-weight="bold" text-anchor="middle">🚚</text>
+                <text x="0" y="-20" fill="#fde68a" font-size="11" font-weight="bold" text-anchor="middle">Live: Chakan APMC Delivery Hub Approach</text>
+                <text x="0" y="28" fill="#f59e0b" font-size="9" font-weight="bold" text-anchor="middle">15.2 m/s • 45,260 m to go</text>
+              </g>
+
+              <!-- Waypoint 4: Chakan Agro Hub -->
+              <g transform="translate(580, 180)">
+                <circle r="5" fill="#64748b" />
+                <text x="0" y="-12" fill="#94a3b8" font-size="10" text-anchor="middle">Chakan Agro Hub</text>
+                <text x="0" y="16" fill="#64748b" font-size="8" text-anchor="middle">Next Milestone</text>
+              </g>
+
+              <!-- Waypoint 5: Pune Consignee Destination -->
+              <g transform="translate(720, 220)">
+                <circle r="9" fill="#3b82f6" />
+                <circle r="15" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.6" />
+                <text x="0" y="-18" fill="#93c5fd" font-size="11" font-weight="bold" text-anchor="middle">Point B: Pune Kalyani Nagar</text>
+                <text x="0" y="24" fill="#94a3b8" font-size="9" text-anchor="middle">Consignee Delivery Hub</text>
+              </g>
+            </svg>
+
+            <!-- Map Controls Overlay -->
+            <div class="absolute bottom-3 right-3 flex items-center gap-2 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-700 text-xs text-slate-300">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>GPS Telemetry Refreshed 10s ago</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- COMPREHENSIVE LIST OF ORDERS VIEW -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div>
+              <h3 class="font-bold text-slate-900 text-base">Consignment List & Order History</h3>
+              <p class="text-xs text-slate-500">Review all placed, in-transit, and completed farm orders with invoice downloads and ratings.</p>
+            </div>
+            
+            <!-- Order Filter Tabs -->
+            <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl text-xs" id="consumer-order-filters">
+              <button type="button" class="consumer-filter-btn px-3 py-1 rounded-lg font-bold bg-white text-slate-900 shadow-xs" data-filter="all">All Orders</button>
+              <button type="button" class="consumer-filter-btn px-3 py-1 rounded-lg font-medium text-slate-600 hover:text-slate-900" data-filter="active">In Transit</button>
+              <button type="button" class="consumer-filter-btn px-3 py-1 rounded-lg font-medium text-slate-600 hover:text-slate-900" data-filter="delivered">Delivered</button>
+              <button type="button" class="consumer-filter-btn px-3 py-1 rounded-lg font-medium text-slate-600 hover:text-slate-900" data-filter="pending">Pending</button>
+            </div>
+          </div>
+
+          <div id="consumer-orders-list">
+            <!-- Rendered dynamically by consumer.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW C: WHOLESALE BUYER NOTIFICATIONS -->
+      <div id="consumer-notifications-view" class="hidden space-y-6">
+        <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <h2 class="text-xl font-bold text-slate-900">Wholesale Buyer Alerts & Tracking Updates</h2>
+            </div>
+            <p class="text-xs text-slate-500">Real-time alerts suited for buyers: farmer order acceptances, truck live GPS dispatch, fresh harvest arrivals, and verified lab quality tests.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button type="button" id="consumer-notif-mark-read-btn" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer">
+              <i data-lucide="check-check" class="w-3.5 h-3.5"></i> Mark All Read
+            </button>
+            <button type="button" id="consumer-notif-clear-btn" class="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Clear
+            </button>
+          </div>
+        </div>
+
+        <div id="consumer-notifications-list" class="space-y-3">
+          <!-- Rendered dynamically by consumer.js -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= 4. TRUCK DRIVER DASHBOARD (LOGISTICS PANEL) ================= -->
+    <section id="portal-driver-dashboard" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+      
+      <!-- Driver Profile & Quick Stats -->
+      <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="flex items-center gap-4">
+          <div class="w-16 h-16 rounded-2xl bg-amber-500 text-white flex items-center justify-center font-extrabold text-2xl shadow-lg shadow-amber-500/20">
+            🚚
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 id="driver-header-name" class="text-xl font-bold text-slate-900">Gurpreet Singh</h2>
+              <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-emerald-100 text-emerald-800">Verified Carrier</span>
+            </div>
+            <p id="driver-header-details" class="text-xs text-slate-500">DL: MH-15-2018009214 • Vehicle: MH-15-EG-4482 (10-Wheeler Multi-Axle)</p>
+            <div class="flex flex-wrap items-center gap-2 mt-1">
+              <span class="text-[11px] text-amber-700 font-semibold bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                Kisan Vahan Agro-Corridor Network
+              </span>
+              <button type="button" class="view-operational-profile-btn text-[11px] font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 px-2.5 py-0.5 rounded-lg transition flex items-center gap-1 border border-slate-200" data-role="driver">
+                <i data-lucide="badge-check" class="w-3 h-3 text-amber-600"></i> View Carrier Profile
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+          <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100">
+            <span class="text-[11px] text-slate-400 block">Today's Earnings</span>
+            <span id="driver-today-earnings" class="text-base font-extrabold text-emerald-700">₹8,250</span>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100">
+            <span class="text-[11px] text-slate-400 block">Weekly Trips</span>
+            <span id="driver-weekly-trips" class="text-base font-extrabold text-slate-800">9 Trips</span>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100">
+            <span class="text-[11px] text-slate-400 block">Fuel Mileage</span>
+            <span id="driver-mileage-stat" class="text-base font-extrabold text-blue-700">4.2 km/L</span>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100">
+            <span class="text-[11px] text-slate-400 block">Driver Rating</span>
+            <span id="driver-rating-stat" class="text-base font-extrabold text-amber-600">★ 4.95</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Driver Portal Tab Navigation -->
+      <div class="flex items-center gap-2 border-b border-slate-200 pb-2 overflow-x-auto">
+        <button type="button" class="driver-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-slate-900 text-white shadow-xs" data-tab="route">
+          <i data-lucide="navigation" class="w-4 h-4 text-emerald-400"></i> Active Route & Live Truck Map
+        </button>
+        <button type="button" class="driver-tab-btn px-4 py-2 rounded-xl text-xs font-semibold transition flex items-center gap-2 bg-slate-100 text-slate-700 hover:bg-slate-200" data-tab="loads">
+          <i data-lucide="package-search" class="w-4 h-4 text-amber-600"></i> Available Freight Loads
+          <span id="driver-loads-count-badge" class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-amber-200 text-amber-900">2</span>
+        </button>
+        <button type="button" class="driver-tab-btn px-4 py-2 rounded-xl text-xs font-semibold transition flex items-center gap-2 bg-slate-100 text-slate-700 hover:bg-slate-200" data-tab="history">
+          <i data-lucide="history" class="w-4 h-4 text-blue-600"></i> Consignment & Trip History
+        </button>
+        <button type="button" class="driver-tab-btn px-4 py-2 rounded-xl text-xs font-semibold transition flex items-center gap-2 bg-slate-100 text-slate-700 hover:bg-slate-200" data-tab="config">
+          <i data-lucide="sliders" class="w-4 h-4 text-slate-600"></i> Payload Capacity & Tariff
+        </button>
+        <button type="button" class="driver-tab-btn px-4 py-2 rounded-xl text-xs font-semibold transition flex items-center gap-2 bg-slate-100 text-slate-700 hover:bg-slate-200" data-tab="notifications">
+          <i data-lucide="bell" class="w-4 h-4 text-amber-600"></i> Dispatch Alerts
+          <span id="driver-notif-count-badge" class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-amber-200 text-amber-900">2</span>
+        </button>
+      </div>
+
+      <!-- TAB 1: ACTIVE ROUTE & LIVE TRUCK MAP (WITH SIDEBAR FOR ASSIGNED TRANSIT ROUTE & TRANSIT SPECS) -->
+      <div id="driver-view-route" class="space-y-6">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- SIDEBAR: ASSIGNED TRANSIT ROUTE & SUPPLEMENTARY TRANSIT SPECS -->
+          <div class="lg:col-span-1 space-y-4">
+            
+            <!-- Assigned Transit Route Card -->
+            <div id="driver-assigned-route-card" class="bg-white rounded-3xl p-5 border-2 border-emerald-500/80 shadow-sm space-y-4">
+              <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div>
+                  <span class="font-mono text-[11px] font-bold text-slate-400">TRIP ID: <span id="route-trip-id" class="text-slate-900">TRIP-8842</span></span>
+                  <h4 class="font-bold text-slate-900 text-sm mt-0.5">Assigned Transit Route</h4>
+                </div>
+                <span id="route-status-label-badge" class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-blue-100 text-blue-800">
+                  In Transit
+                </span>
+              </div>
+
+              <!-- Point A (Origin Farm) -->
+              <div class="p-3 rounded-2xl bg-emerald-50/60 border border-emerald-200 text-xs space-y-1">
+                <div class="flex items-center justify-between text-emerald-900 font-bold text-[11px]">
+                  <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-600"></span> ORIGIN (FARM PICKUP)</span>
+                  <span class="font-mono text-[10px] text-emerald-700">Point A</span>
+                </div>
+                <h5 id="route-origin-name" class="font-bold text-slate-900 text-xs">Ramesh Patel Farm (Nashik)</h5>
+                <p id="route-origin-addr" class="text-[11px] text-slate-600 leading-tight">Nashik Agro-Cluster, MH</p>
+                <div class="pt-2 flex items-center justify-between border-t border-emerald-200/60 text-[11px]">
+                  <span class="text-slate-500">Farmer: Ramesh Patel</span>
+                  <a href="tel:+919423188901" class="text-emerald-700 font-bold hover:underline flex items-center gap-1">
+                    <i data-lucide="phone" class="w-3 h-3"></i> Call
+                  </a>
+                </div>
+              </div>
+
+              <!-- Point B (Destination Consignee) -->
+              <div class="p-3 rounded-2xl bg-blue-50/60 border border-blue-200 text-xs space-y-1">
+                <div class="flex items-center justify-between text-blue-900 font-bold text-[11px]">
+                  <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-blue-600"></span> DESTINATION (CONSIGNEE)</span>
+                  <span class="font-mono text-[10px] text-blue-700">Point B</span>
+                </div>
+                <h5 id="route-dest-name" class="font-bold text-slate-900 text-xs">Sahyadri Flour Mills (Pune)</h5>
+                <p id="route-dest-addr" class="text-[11px] text-slate-600 leading-tight">Chakan Industrial Hub, Pune, MH</p>
+                <div class="pt-2 flex items-center justify-between border-t border-blue-200/60 text-[11px]">
+                  <span class="text-slate-500">Receiver: Supervisor</span>
+                  <a href="tel:+919881177209" class="text-blue-700 font-bold hover:underline flex items-center gap-1">
+                    <i data-lucide="phone" class="w-3 h-3"></i> Call
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between text-xs pt-1">
+                <span class="text-slate-500">Guaranteed Freight Fee:</span>
+                <span id="route-payout-stat" class="font-extrabold text-emerald-700 text-base">₹5,450</span>
+              </div>
+            </div>
+
+            <!-- SUPPLEMENTARY TRANSIT PARAMETERS CARD -->
+            <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm space-y-3 text-xs">
+              <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                <h4 class="font-bold text-slate-900 text-sm flex items-center gap-1.5">
+                  <i data-lucide="shield-alert" class="w-4 h-4 text-emerald-600"></i> Transit Parameters & Telemetry
+                </h4>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-700">Live Sensors</span>
+              </div>
+
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50">
+                  <span class="text-slate-500 flex items-center gap-1.5"><i data-lucide="lock" class="w-3.5 h-3.5 text-emerald-600"></i> Cargo Seal No:</span>
+                  <span id="driver-spec-seal" class="font-mono font-bold text-slate-900">MH-SEAL-882914-A</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2">
+                  <div class="p-2 rounded-xl bg-slate-50">
+                    <span class="text-slate-400 block text-[10px]">Temperature</span>
+                    <span id="driver-spec-temp" class="font-bold text-blue-700 text-xs">18.4°C (Optimal)</span>
+                  </div>
+                  <div class="p-2 rounded-xl bg-slate-50">
+                    <span class="text-slate-400 block text-[10px]">Humidity</span>
+                    <span id="driver-spec-humidity" class="font-bold text-blue-700 text-xs">62% RH</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50">
+                  <span class="text-slate-500 flex items-center gap-1.5"><i data-lucide="radio" class="w-3.5 h-3.5 text-blue-600"></i> FASTag Status:</span>
+                  <span id="driver-spec-fastag" class="font-bold text-emerald-700 text-[11px]">✓ Cleared at Ghoti Toll</span>
+                </div>
+
+                <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50">
+                  <span class="text-slate-500 flex items-center gap-1.5"><i data-lucide="file-text" class="w-3.5 h-3.5 text-purple-600"></i> E-Way Bill:</span>
+                  <span id="driver-spec-eway" class="font-mono font-bold text-slate-800 text-[11px]">EWB-2940-1184-7729</span>
+                </div>
+
+                <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50">
+                  <span class="text-slate-500 flex items-center gap-1.5"><i data-lucide="fuel" class="w-3.5 h-3.5 text-amber-600"></i> Est. Fuel Use:</span>
+                  <span id="driver-spec-fuel" class="font-bold text-amber-800 text-[11px]">38.5 L Diesel (~₹3,465)</span>
+                </div>
+
+                <div class="p-2.5 rounded-xl bg-amber-50/70 border border-amber-200">
+                  <span class="text-amber-900 block font-bold text-[11px] mb-0.5">Crop Haul Consignment Details:</span>
+                  <p id="driver-spec-haul" class="text-slate-700 text-[11px]">25 Quintals Sharbati Wheat • 50 Gunny Bags (Grade A+ Certified)</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- MAIN AREA: ACTIVE TRUCK MAP & WAYPOINTS TRACKER -->
+          <div class="lg:col-span-2 space-y-6">
+            
+            <!-- ACTIVE TRUCK ROUTE MAP CARD -->
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center font-bold">
+                    <i data-lucide="truck" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-slate-900 text-sm sm:text-base">Active Truck Route & Real-Time Tracking Map</h3>
+                    <p class="text-xs text-slate-500">Live corridor telemetry: NH-60 Nashik-Pune Highway • Speed: 15.2 m/s</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <button type="button" id="driver-map-center-btn" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition flex items-center gap-1 border border-slate-200">
+                    <i data-lucide="crosshair" class="w-3.5 h-3.5"></i> Center GPS
+                  </button>
+                </div>
+              </div>
+
+              <!-- Live Active Route SVG Map -->
+              <div class="relative w-full h-64 sm:h-80 bg-gradient-to-br from-slate-950 via-slate-900 to-amber-950 rounded-2xl overflow-hidden border border-slate-700 shadow-inner flex items-center justify-center">
+                <svg class="w-full h-full" viewBox="0 0 800 320" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="driver-route-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#10b981" />
+                      <stop offset="50%" stop-color="#f59e0b" />
+                      <stop offset="100%" stop-color="#3b82f6" />
+                    </linearGradient>
+                    <filter id="glow-driver" x="-20%" y="-20%" width="140%" height="140%">
+                      <feGaussianBlur stdDeviation="3" result="blur" />
+                      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                  </defs>
+
+                  <!-- Map Grid -->
+                  <pattern id="grid-driver" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+                  </pattern>
+                  <rect width="100%" height="100%" fill="url(#grid-driver)" />
+
+                  <!-- Highway polyline route -->
+                  <path d="M 80 90 Q 260 200, 440 160 T 720 230" fill="none" stroke="rgba(245, 158, 11, 0.2)" stroke-width="14" stroke-linecap="round" />
+                  <path id="driver-route-path" d="M 80 90 Q 260 200, 440 160 T 720 230" fill="none" stroke="url(#driver-route-grad)" stroke-width="6" stroke-linecap="round" filter="url(#glow-driver)" />
+
+                  <!-- Waypoint 1: Point A Farm -->
+                  <g transform="translate(80, 90)">
+                    <circle r="8" fill="#10b981" />
+                    <circle r="14" fill="none" stroke="#10b981" stroke-width="1.5" opacity="0.6" />
+                    <text x="0" y="-16" fill="#a7f3d0" font-size="11" font-weight="bold" text-anchor="middle">Point A: Nashik Farm</text>
+                    <text x="0" y="22" fill="#94a3b8" font-size="9" text-anchor="middle">08:30 AM Dispatched</text>
+                  </g>
+
+                  <!-- Waypoint 2: Toll -->
+                  <g transform="translate(250, 165)">
+                    <circle r="5" fill="#10b981" />
+                    <text x="0" y="-12" fill="#cbd5e1" font-size="10" text-anchor="middle">Ghoti Toll FASTag</text>
+                    <text x="0" y="15" fill="#10b981" font-size="8" text-anchor="middle">Cleared</text>
+                  </g>
+
+                  <!-- Waypoint 3: Live Truck Location (Chakan Approach / In-Transit) -->
+                  <g transform="translate(580, 185)" id="driver-active-truck-pin" style="transition: transform 1s linear;">
+                    <circle r="20" fill="#f59e0b" opacity="0.3" class="animate-ping" />
+                    <circle r="14" fill="#f59e0b" stroke="#ffffff" stroke-width="2.5" />
+                    <text x="0" y="4" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">🚚</text>
+                    <text x="0" y="-22" fill="#fde68a" font-size="12" font-weight="bold" text-anchor="middle">Active Truck MH-15-EG-4482</text>
+                    <text x="0" y="30" fill="#f59e0b" font-size="10" font-weight="bold" text-anchor="middle">15.2 m/s • 45,260 m to Destination</text>
+                  </g>
+
+                  <!-- Waypoint 4: Chakan Agro Hub -->
+                  <g transform="translate(600, 195)">
+                    <circle r="5" fill="#64748b" />
+                    <text x="0" y="-12" fill="#94a3b8" font-size="10" text-anchor="middle">Chakan APMC Hub</text>
+                  </g>
+
+                  <!-- Waypoint 5: Point B Consignee Destination -->
+                  <g transform="translate(720, 230)">
+                    <circle r="8" fill="#3b82f6" />
+                    <circle r="14" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.6" />
+                    <text x="0" y="-16" fill="#93c5fd" font-size="11" font-weight="bold" text-anchor="middle">Point B: Pune Destination</text>
+                    <text x="0" y="22" fill="#94a3b8" font-size="9" text-anchor="middle">ETA 50 mins</text>
+                  </g>
+                </svg>
+
+                <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-700 text-xs text-slate-300 flex items-center gap-3">
+                  <span>Distance: <b id="route-distance-stat" class="text-white">164 km (45,260 m left)</b></span>
+                  <span>Est. Time: <b id="route-time-stat" class="text-white">3h 45m</b></span>
+                </div>
+              </div>
+
+              <!-- Cargo Manifest Summary -->
+              <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+                <div>
+                  <span class="font-bold text-slate-700 block text-[11px]">Active Cargo Manifest:</span>
+                  <span id="route-cargo-desc" class="text-slate-900 font-semibold">Sharbati Golden Wheat (Grade A+) (25 Quintals • 2.5 Tons)</span>
+                </div>
+                <div class="text-emerald-700 font-bold flex items-center gap-1">
+                  <i data-lucide="shield-check" class="w-4 h-4"></i> Escrow Secured Freight
+                </div>
+              </div>
+
+              <!-- Visual Waypoints Progress Tracker -->
+              <div class="pt-2">
+                <h4 class="text-xs font-bold text-slate-700 mb-3">Live Transit Corridors & Waypoint Updates:</h4>
+                <div id="driver-waypoints-track" class="space-y-2">
+                  <!-- Rendered dynamically by driver.js -->
+                </div>
+              </div>
+
+              <!-- Route Status Action Stepper Button -->
+              <div class="pt-2">
+                <button type="button" id="route-status-action-btn" class="w-full py-3.5 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
+                  <i data-lucide="check-circle" class="w-5 h-5"></i> Advance Transit Status
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- TAB 2: AVAILABLE FREIGHT LOADS BOARD (WITH DECLINE BUTTON) -->
+      <div id="driver-view-loads" class="hidden space-y-6">
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+            <div>
+              <h3 class="font-bold text-slate-900 text-base">Available Freight Loads & Cargo Opportunities</h3>
+              <p class="text-xs text-slate-500">Pick up additional consignments along your corridor to maximize payload capacity. You can accept or decline requests.</p>
+            </div>
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800">Direct Farm Gate Demands</span>
+          </div>
+
+          <div id="driver-loads-list" class="space-y-3">
+            <!-- Rendered by driver.js with Accept & Decline buttons -->
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: DEDICATED CARRIER ORDER & TRIP HISTORY VIEW -->
+      <div id="driver-view-history" class="hidden space-y-6">
+        <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+            <div>
+              <h3 class="font-bold text-slate-900 text-base">Carrier Trip & Consignment History</h3>
+              <p class="text-xs text-slate-500">Complete record of delivered agricultural consignments, payouts, FASTag tolls, and performance ratings.</p>
+            </div>
+            <div class="text-xs font-semibold text-slate-500">
+              Total Recorded: <b id="driver-history-count" class="text-slate-900">4 Completed Trips</b>
+            </div>
+          </div>
+
+          <div id="driver-history-list" class="space-y-3">
+            <!-- Rendered dynamically by driver.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: VEHICLE PAYLOAD CAPACITY & FREIGHT TARIFF CONFIGURATION -->
+      <div id="driver-view-config" class="hidden space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          
+          <!-- Capacity Tool & Live Meter -->
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <i data-lucide="gauge" class="w-5 h-5 text-amber-600"></i>
+                <h3 class="font-bold text-slate-900 text-base">Vehicle Payload Capacity Meter</h3>
+              </div>
+              <span id="capacity-percent-badge" class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-100 text-amber-800">
+                65% Utilized
+              </span>
+            </div>
+
+            <!-- Dynamic Progress Meter Bar -->
+            <div>
+              <div class="w-full bg-slate-100 h-4 rounded-full overflow-hidden border border-slate-200 p-0.5">
+                <div id="capacity-progress-bar" class="h-full bg-gradient-to-r from-emerald-500 to-amber-500 rounded-full transition-all duration-500" style="width: 65%;"></div>
+              </div>
+              <div class="flex justify-between text-xs text-slate-500 mt-2">
+                <span>Booked: <b id="driver-booked-cap-display" class="text-slate-800">6.5 Tons</b></span>
+                <span>Available Space: <b id="driver-available-cap-display" class="text-emerald-700 font-bold">3.5 Tons Remaining</b></span>
+                <span>Max Capacity: <b id="driver-max-cap-display" class="text-slate-800">10.0 Tons</b></span>
+              </div>
+            </div>
+
+            <!-- Capacity Form Configuration -->
+            <form id="driver-capacity-form" class="pt-3 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Max Vehicle Capacity (Tons)</label>
+                <input type="number" id="driver-max-cap-input" step="0.5" value="10.0" class="w-full px-3 py-2 rounded-xl border border-slate-300 outline-none">
+              </div>
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Vehicle Classification</label>
+                <select id="driver-vehicle-type-select" class="w-full px-3 py-2 rounded-xl border border-slate-300 outline-none">
+                  <option value="10-Wheeler Multi-Axle Truck">10-Wheeler Multi-Axle Truck (10T)</option>
+                  <option value="Mini Truck (Tata Ace)">Mini Truck (Tata Ace - 1.5T)</option>
+                  <option value="Reefer Cold-Van">Reefer Cold-Van (5T Perishable)</option>
+                  <option value="Tractor Trolley">Tractor Trolley (4T Mandi Shuttle)</option>
+                </select>
+              </div>
+              <div class="sm:col-span-2 text-right">
+                <button type="submit" class="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl transition">
+                  Update Capacity Specs
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Pricing Tool Panel -->
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <i data-lucide="tag" class="w-5 h-5 text-emerald-700"></i>
+                <h3 class="font-bold text-slate-900 text-base">Freight Pricing Tariff Tool</h3>
+              </div>
+              <span class="text-xs font-semibold text-slate-500">Kisan Vahan Standard Rate</span>
+            </div>
+
+            <p class="text-xs text-slate-500">Configure base rates charged to farmers and consumers for agro-logistics transit.</p>
+
+            <form id="driver-pricing-form" class="space-y-3 text-xs">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block font-semibold text-slate-700 mb-1">Base Freight Rate (₹ / km)</label>
+                  <input type="number" id="driver-base-km-input" value="28" class="w-full px-3 py-2 rounded-xl border border-slate-300 outline-none font-bold text-slate-800">
+                </div>
+                <div>
+                  <label class="block font-semibold text-slate-700 mb-1">Rate per Quintal (₹ / 100km)</label>
+                  <input type="number" id="driver-per-qtl-input" value="16" class="w-full px-3 py-2 rounded-xl border border-slate-300 outline-none font-bold text-slate-800">
+                </div>
+              </div>
+
+              <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-600 flex justify-between items-center text-[11px]">
+                <span>Toll charges & APMC cess billed automatically</span>
+                <span class="font-semibold text-emerald-700">Escrow Protected</span>
+              </div>
+
+              <div class="text-right">
+                <button type="submit" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl transition">
+                  Save Tariff Pricing
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 5: DRIVER DISPATCH ALERTS & NOTIFICATIONS -->
+      <div id="driver-view-notifications" class="hidden space-y-6">
+        <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              <h2 class="text-xl font-bold text-slate-900">Carrier Dispatch Alerts & Freight Updates</h2>
+            </div>
+            <p class="text-xs text-slate-500">Real-time notifications suited for truck drivers: new load postings, farm gate pickup readiness, toll clearances, and direct UPI freight payments.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button type="button" id="driver-notif-mark-read-btn" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer">
+              <i data-lucide="check-check" class="w-3.5 h-3.5"></i> Mark All Read
+            </button>
+            <button type="button" id="driver-notif-clear-btn" class="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Clear
+            </button>
+          </div>
+        </div>
+
+        <div id="driver-notifications-list" class="space-y-3">
+          <!-- Rendered dynamically by driver.js -->
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ================= CART DRAWER (SLIDE-OUT) ================= -->
+  <div id="cart-drawer" class="fixed inset-y-0 right-0 max-w-md w-full bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between border-l border-slate-200">
+    <div class="p-5 border-b border-slate-200 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <i data-lucide="shopping-bag" class="w-5 h-5 text-emerald-700"></i>
+        <h3 class="font-bold text-slate-900 text-base">Farm Direct Cart</h3>
+      </div>
+      <button type="button" id="close-cart-btn" class="text-slate-400 hover:text-slate-600 p-1">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <div id="cart-items-list" class="flex-grow overflow-y-auto p-5 space-y-3">
+      <!-- Rendered by consumer.js -->
+    </div>
+
+    <div class="p-5 border-t border-slate-200 bg-slate-50 space-y-3 text-xs">
+      <div class="flex justify-between text-slate-600">
+        <span>Produce Subtotal:</span>
+        <span id="cart-subtotal-val" class="font-semibold text-slate-900">₹0</span>
+      </div>
+      <div class="flex justify-between text-slate-600">
+        <span>Green Logistics Freight:</span>
+        <span id="cart-logistics-val" class="font-semibold text-slate-900">₹0</span>
+      </div>
+      <div class="flex justify-between text-sm font-extrabold text-slate-900 pt-2 border-t border-slate-200">
+        <span>Total Payable:</span>
+        <span id="cart-total-val" class="text-emerald-700">₹0</span>
+      </div>
+      <div class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-center justify-between text-[11px]">
+        <span class="flex items-center gap-1 font-medium"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-emerald-600"></i> Est. Retail Savings vs Middlemen:</span>
+        <span id="cart-savings-val" class="font-bold text-emerald-700">₹0</span>
+      </div>
+
+      <button type="button" id="proceed-checkout-btn" class="w-full py-3.5 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
+        Proceed to Checkout <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= CHECKOUT MODAL ================= -->
+  <div id="checkout-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto space-y-5">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div>
+          <h3 class="text-lg font-bold text-slate-900">Direct Farm Checkout</h3>
+          <p class="text-xs text-slate-500">Escrow-backed payment released only upon physical delivery verification.</p>
+        </div>
+        <button type="button" id="close-checkout-modal" class="text-slate-400 hover:text-slate-600">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Order Summary in checkout -->
+      <div id="checkout-order-summary" class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-1"></div>
+
+      <!-- Checkout Form -->
+      <form id="consumer-checkout-form" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Delivery Address & Pin Code</label>
+          <input type="text" id="checkout-address-input" required value="Flat 402, Sunshine Heights, Kalyani Nagar, Pune, MH 411006"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Logistics & Transit Mode</label>
+          <select id="checkout-logistics-speed" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none">
+            <option value="Standard Agro-Freight">Standard Rural Logistics (Gurpreet Fleet - Same Day / 24 hrs)</option>
+            <option value="Cold-Chain Reefer">Refrigerated Reefer Transport (Perishables / Temperature controlled)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1.5">Payment Method</label>
+          <div class="space-y-2" id="checkout-payment-options">
+            <label class="payment-method-option flex items-center gap-2.5 p-3 rounded-xl border-2 border-emerald-500 bg-emerald-50/80 shadow-xs cursor-pointer transition">
+              <input type="radio" name="payment_method" value="UPI / Instant Kisan Pay" checked class="text-emerald-600 focus:ring-emerald-500">
+              <span class="font-bold text-slate-800">UPI / Direct Mandi Escrow (Zero Platform Fee)</span>
+            </label>
+            <label class="payment-method-option flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition">
+              <input type="radio" name="payment_method" value="Kisan Credit / NetBanking" class="text-emerald-600 focus:ring-emerald-500">
+              <span class="font-medium text-slate-700">Commercial Wholesale NetBanking / RTGS</span>
+            </label>
+            <label class="payment-method-option flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition">
+              <input type="radio" name="payment_method" value="Pay on Delivery" class="text-emerald-600 focus:ring-emerald-500">
+              <span class="font-medium text-slate-700">Pay on Delivery (Verified Quality Check First)</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2 mt-2">
+          <i data-lucide="lock" class="w-4 h-4"></i> Place Direct Order & Trigger Farm Dispatch
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= MAKE OFFER MODAL ================= -->
+  <div id="make-offer-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div>
+          <h3 class="font-bold text-slate-900 text-base">Make a Purchase Offer</h3>
+          <p class="text-xs text-slate-500">Propose your price directly to the farmer. It will appear in their Request Inbox.</p>
+        </div>
+        <button type="button" onclick="document.getElementById('make-offer-modal').classList.add('hidden')" class="text-slate-400 hover:text-slate-600">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <form id="make-offer-form" class="space-y-3 text-xs">
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <span class="text-slate-400 block text-[11px]">Crop Selected:</span>
+          <h4 id="offer-crop-title" class="font-bold text-slate-900 text-sm">Sharbati Wheat</h4>
+          <span id="offer-crop-list-price" class="text-xs text-emerald-700 font-semibold">₹2650 / Quintal</span>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Your Offered Price (INR per unit)</label>
+          <input type="number" id="offer-price-input" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none focus:ring-2 focus:ring-emerald-500 font-bold text-slate-800">
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Quantity Requested</label>
+          <input type="number" id="offer-quantity-input" required min="1" value="10" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 outline-none">
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Buyer Notes / Delivery Window</label>
+          <textarea id="offer-notes-input" rows="2" placeholder="e.g. Can take delivery this Friday in Kalyani Nagar." class="w-full px-3 py-2 rounded-xl border border-slate-300 outline-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs shadow-md transition">
+          Submit Offer to Farmer
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= ORDER RATING & REVIEW MODAL ================= -->
+  <div id="order-review-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div>
+          <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
+            <i data-lucide="star" class="w-5 h-5 text-amber-500 fill-amber-400"></i>
+            Rate & Review Delivery
+          </h3>
+          <p class="text-xs text-slate-500">Provide direct feedback on produce freshness and carrier logistics.</p>
+        </div>
+        <button type="button" id="close-review-modal-btn" class="text-slate-400 hover:text-slate-600">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200">
+        <span class="text-[11px] text-slate-400 block">Completed Consignment:</span>
+        <h4 id="review-modal-crop-name" class="font-bold text-slate-900 text-sm">Sharbati Golden Wheat</h4>
+        <div class="flex items-center justify-between text-xs text-slate-500 mt-1">
+          <span id="review-modal-farmer-name">Farmer: Ramesh Patel</span>
+          <span id="review-modal-order-id" class="font-mono font-bold text-slate-700">Order #1002</span>
+        </div>
+      </div>
+
+      <!-- Star Rating Input -->
+      <div class="text-center py-2">
+        <label class="block font-bold text-slate-700 text-xs mb-2">Select Your Experience Rating</label>
+        <div class="flex items-center justify-center gap-2" id="review-star-rating-container">
+          <button type="button" class="review-star-btn text-2xl text-amber-400 hover:scale-125 transition" data-val="1">★</button>
+          <button type="button" class="review-star-btn text-2xl text-amber-400 hover:scale-125 transition" data-val="2">★</button>
+          <button type="button" class="review-star-btn text-2xl text-amber-400 hover:scale-125 transition" data-val="3">★</button>
+          <button type="button" class="review-star-btn text-2xl text-amber-400 hover:scale-125 transition" data-val="4">★</button>
+          <button type="button" class="review-star-btn text-2xl text-amber-400 hover:scale-125 transition" data-val="5">★</button>
+        </div>
+        <span id="review-rating-caption" class="text-xs font-bold text-emerald-700 mt-1 block">5.0 - Outstanding (Farm Fresh)</span>
+      </div>
+
+      <!-- Quick Feedback Tags -->
+      <div>
+        <label class="block font-bold text-slate-700 text-xs mb-1.5">What went well? (Select tags)</label>
+        <div class="flex flex-wrap gap-1.5" id="review-tag-chips">
+          <button type="button" class="review-tag-chip px-2.5 py-1 rounded-full text-xs font-medium border border-emerald-300 bg-emerald-50 text-emerald-800" data-tag="Farm Fresh Quality">✓ Farm Fresh Quality</button>
+          <button type="button" class="review-tag-chip px-2.5 py-1 rounded-full text-xs font-medium border border-emerald-300 bg-emerald-50 text-emerald-800" data-tag="Punctual Delivery">✓ Punctual Delivery</button>
+          <button type="button" class="review-tag-chip px-2.5 py-1 rounded-full text-xs font-medium border border-slate-200 bg-white text-slate-600 hover:bg-slate-50" data-tag="Pristine Packaging">Pristine Packaging</button>
+          <button type="button" class="review-tag-chip px-2.5 py-1 rounded-full text-xs font-medium border border-slate-200 bg-white text-slate-600 hover:bg-slate-50" data-tag="Accurate Weight">Accurate Weight</button>
+          <button type="button" class="review-tag-chip px-2.5 py-1 rounded-full text-xs font-medium border border-slate-200 bg-white text-slate-600 hover:bg-slate-50" data-tag="Cold-Chain Maintained">Cold-Chain Maintained</button>
+        </div>
+      </div>
+
+      <!-- Text Comments -->
+      <div>
+        <label class="block font-bold text-slate-700 text-xs mb-1">Detailed Review Comments</label>
+        <textarea id="review-comments-input" rows="3" placeholder="Share your experience with the crop quality, grading, and delivery driver..."
+          class="w-full px-3 py-2 rounded-xl border border-slate-300 outline-none text-xs focus:ring-2 focus:ring-emerald-500"></textarea>
+      </div>
+
+      <input type="hidden" id="review-active-order-id" value="">
+      <input type="hidden" id="review-active-rating-val" value="5">
+
+      <button type="button" id="submit-order-review-btn" class="w-full py-3 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
+        <i data-lucide="check-circle" class="w-4 h-4"></i> Submit Verified Review to Producer
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= OPERATIONAL USER PROFILE MODAL ================= -->
+  <div id="operational-profile-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-3xl w-full shadow-2xl border border-slate-200 overflow-hidden max-h-[92vh] flex flex-col">
+      
+      <!-- Top Persona Selector Pill Bar (Easily view Farmer, Consumer, or Driver operational profile) -->
+      <div class="bg-slate-900 text-white px-5 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 flex-shrink-0">
+        <div class="flex items-center gap-2">
+          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Operational Profile:</span>
+          <span id="profile-modal-current-role-label" class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-500 text-white">Farmer Portal</span>
+        </div>
+        
+        <!-- Role-isolated Profile Header -->
+        <div class="flex items-center gap-2">
+          <span id="profile-modal-role-pill" class="text-xs font-semibold px-2.5 py-1 rounded-xl bg-slate-800 text-slate-200 border border-slate-700">
+            Verified Active Account
+          </span>
+          <button type="button" id="close-profile-modal-btn" class="ml-2 text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Scrollable Modal Body -->
+      <div class="p-5 sm:p-7 overflow-y-auto space-y-6 flex-grow">
+        
+        <!-- Profile Identity Hero Card -->
+        <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-5 border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <div id="profile-modal-avatar" class="w-16 h-16 rounded-2xl bg-emerald-700 text-white flex items-center justify-center text-3xl font-extrabold shadow-md flex-shrink-0">
+              🌾
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 id="profile-modal-name" class="text-lg sm:text-xl font-black text-slate-900 leading-tight">Ramesh Patel</h2>
+                <span id="profile-modal-hindi" class="text-xs text-slate-500 font-medium"></span>
+              </div>
+              <p id="profile-modal-tagline" class="text-xs text-slate-600 font-medium mt-0.5">Progressive Cultivator</p>
+              
+              <div class="flex flex-wrap items-center gap-2 mt-2">
+                <span id="profile-modal-kyc-badge" class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-emerald-100/90 px-2 py-0.5 rounded-full">
+                  <i data-lucide="shield-check" class="w-3 h-3 text-emerald-600"></i> e-NAM Verified
+                </span>
+                <span id="profile-govt-id" class="text-[11px] font-mono text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
+                  ID: MH-NSK-4402
+                </span>
+                <span id="profile-enam-id" class="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                  e-NAM ID: MH/APMC/NSK/2021-9941
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 sm:self-center flex-shrink-0">
+            <button type="button" id="download-digital-pass-btn" class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-xs flex items-center gap-1.5 transition cursor-pointer">
+              <i data-lucide="qr-code" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>Digital ID Pass</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Operational Performance Stats Strip -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200 text-center">
+            <span class="text-[11px] text-slate-400 block font-medium">Verified Rating</span>
+            <span id="profile-rating-badge" class="text-base font-extrabold text-amber-500">★ 4.90</span>
+            <span id="profile-reviews-count" class="text-[10px] text-slate-500 block">(38 Buyer Reviews)</span>
+          </div>
+          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200 text-center">
+            <span class="text-[11px] text-slate-400 block font-medium">Fulfillment Rate</span>
+            <span id="profile-ontime-rate" class="text-base font-extrabold text-emerald-700">100%</span>
+            <span class="text-[10px] text-slate-500 block">On-Time Dispatches</span>
+          </div>
+          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200 text-center">
+            <span class="text-[11px] text-slate-400 block font-medium">Total Volume / Lots</span>
+            <span id="profile-delivered-count" class="text-base font-extrabold text-slate-800">54 Lots</span>
+            <span class="text-[10px] text-slate-500 block">Successfully Settled</span>
+          </div>
+        </div>
+
+        <!-- 4 Structured Operational Sections -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+          
+          <!-- SECTION 1: Legal Credentials & Certifications -->
+          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+              <i data-lucide="award" class="w-4 h-4 text-emerald-600"></i>
+              <h3 class="font-bold text-slate-900 text-xs uppercase tracking-wider">Accreditations & Compliance</h3>
+            </div>
+
+            <div class="space-y-2">
+              <div>
+                <span class="text-slate-400 block text-[11px]">Primary Soil / Health / Fitness Standard:</span>
+                <span id="profile-soil-card" class="font-semibold text-slate-800">SHC-MH-2025-8812 (Optimal NPK Cleared, pH 7.2)</span>
+              </div>
+
+              <div>
+                <span class="text-slate-400 block text-[11px] mb-1">Active Compliance Badges:</span>
+                <div id="profile-certs-grid" class="space-y-1.5">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 2: Operational Assets, Land & Fleet -->
+          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+              <i data-lucide="layers" class="w-4 h-4 text-blue-600"></i>
+              <h3 class="font-bold text-slate-900 text-xs uppercase tracking-wider">Assets & Capacities</h3>
+            </div>
+
+            <div class="space-y-2">
+              <div>
+                <span class="text-slate-400 block text-[11px]">Holding / Fleet Classification:</span>
+                <span id="profile-land-holding" class="font-semibold text-slate-800">12.5 Acres (9.0A Drip Irrigated • 3.5A Polyhouse)</span>
+              </div>
+
+              <div>
+                <span class="text-slate-400 block text-[11px]">Storage / Payload Capacity:</span>
+                <span id="profile-storage-capacity" class="font-semibold text-slate-800">200 Quintals Ventilated Silo • 400 Crates Cold Storage</span>
+              </div>
+
+              <div>
+                <span class="text-slate-400 block text-[11px]">Irrigation / Facility Technology:</span>
+                <span id="profile-irrigation-type" class="font-semibold text-slate-800">Solar Powered Micro-Drip with Fertigation Unit</span>
+              </div>
+
+              <div>
+                <span class="text-slate-400 block text-[11px]">Primary Portfolios / Cargo:</span>
+                <span id="profile-primary-crops" class="font-semibold text-emerald-700">Sharbati Golden Wheat, Alphonso Mangoes, Vine Tomatoes</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 3: Direct Banking & Mandi Escrow -->
+          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
+            <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+              <i data-lucide="landmark" class="w-4 h-4 text-amber-600"></i>
+              <h3 class="font-bold text-slate-900 text-xs uppercase tracking-wider">Direct Banking & Escrow</h3>
+            </div>
+
+            <div class="space-y-2">
+              <div>
+                <span class="text-slate-400 block text-[11px]">Settlement Financial Institution:</span>
+                <span id="profile-bank-name" class="font-semibold text-slate-800">State Bank of India (Dindori Branch)</span>
+              </div>
+
+              <div class="flex items-center justify-between text-slate-700">
+                <span>Account: <b id="profile-bank-ac" class="font-mono font-semibold">•••• •••• •••• 9812</b></span>
+                <span>IFSC: <b id="profile-bank-ifsc" class="font-mono font-semibold">SBIN0004128</b></span>
+              </div>
+
+              <div class="p-2.5 rounded-xl bg-emerald-50/70 border border-emerald-200 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] text-emerald-800 uppercase font-bold block">Credit / Escrow Facility:</span>
+                  <span id="profile-kcc-limit" class="font-bold text-emerald-900">₹4,50,000 (Available: ₹3,30,000)</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] text-slate-400 uppercase block">Settlement Speed</span>
+                  <span id="profile-settlement-speed" class="text-[11px] font-semibold text-slate-700">Direct DBT / Instant</span>
+                </div>
+              </div>
+
+              <div>
+                <span class="text-slate-400 block text-[11px]">Direct Escrow VPA / UPI:</span>
+                <div class="flex items-center justify-between bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-200 font-mono text-xs">
+                  <span id="profile-mandi-upi" class="font-bold text-slate-800">ramesh.kisan@sbi</span>
+                  <button type="button" class="text-emerald-700 hover:text-emerald-800 text-[11px] font-semibold" onclick="navigator.clipboard?.writeText(document.getElementById('profile-mandi-upi').textContent); alert('UPI VPA Copied!');">
+                    Copy VPA
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 4: Geolocation & Verified Contact Dispatch -->
+          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+              <div class="flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4 text-red-600"></i>
+                <h3 class="font-bold text-slate-900 text-xs uppercase tracking-wider">Dispatch & Contact</h3>
+              </div>
+              <button type="button" id="toggle-edit-contact-btn" class="text-emerald-700 hover:text-emerald-800 font-semibold text-[11px] flex items-center gap-1">
+                <i data-lucide="edit-3" class="w-3 h-3"></i> Edit Info
+              </button>
+            </div>
+
+            <!-- View Mode -->
+            <div id="profile-contact-view" class="space-y-2">
+              <div>
+                <span class="text-slate-400 block text-[11px]">Physical Dispatch Location:</span>
+                <span id="profile-address-display" class="font-semibold text-slate-800 block">Plot 44, Dindori Agro-Zone, Nashik, Maharashtra 422202</span>
+              </div>
+
+              <div>
+                <span class="text-slate-400 block text-[11px]">GPS Geolocation Coordinates:</span>
+                <div class="flex items-center justify-between bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-200 font-mono text-xs">
+                  <span id="profile-coordinates" class="font-bold text-slate-800">19.9975° N, 73.7898° E</span>
+                  <button type="button" class="text-blue-700 hover:text-blue-800 text-[11px] font-semibold flex items-center gap-1"
+                    onclick="alert('GPS Geolocation Coordinates copied to clipboard! Ready for Google Maps / Vahan Nav.');">
+                    <i data-lucide="crosshair" class="w-3 h-3"></i> Copy GPS
+                  </button>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2 pt-1">
+                <div>
+                  <span class="text-slate-400 block text-[11px]">Verified Phone:</span>
+                  <a id="profile-phone-link" href="tel:+919423188901" class="font-bold text-emerald-700 hover:underline flex items-center gap-1">
+                    <i data-lucide="phone" class="w-3 h-3"></i> <span id="profile-phone-display">+91 94231 88901</span>
+                  </a>
+                </div>
+                <div>
+                  <span class="text-slate-400 block text-[11px]">Official Email:</span>
+                  <span id="profile-email-display" class="font-medium text-slate-700 truncate block">ramesh.patel.kisan@agri.gov.in</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Inline Edit Mode (Hidden by default) -->
+            <form id="profile-contact-edit-form" class="space-y-2 hidden pt-1">
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-700">Dispatch Phone</label>
+                <input type="text" id="edit-profile-phone" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 outline-none text-xs">
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-700">Official Email</label>
+                <input type="email" id="edit-profile-email" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 outline-none text-xs">
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-700">Physical Address</label>
+                <input type="text" id="edit-profile-address" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 outline-none text-xs">
+              </div>
+              <div class="flex items-center justify-end gap-2 pt-1">
+                <button type="button" id="cancel-edit-contact-btn" class="px-3 py-1 rounded-lg text-slate-500 hover:bg-slate-100 text-xs">Cancel</button>
+                <button type="submit" class="px-3 py-1 bg-emerald-700 text-white rounded-lg font-bold text-xs">Save Changes</button>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 flex-shrink-0">
+        <div class="flex items-center gap-2 text-xs text-slate-500">
+          <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i>
+          <span>Ministry of Agriculture & KisanSetu Verified Entity</span>
+        </div>
+
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+          <button type="button" id="close-profile-modal-btn2" class="w-full sm:w-auto px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs rounded-xl transition">
+            Close Profile
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= DIGITAL ID VERIFICATION PASS MODAL (QR PASS) ================= -->
+  <div id="digital-pass-modal" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border-4 border-emerald-600/60 relative overflow-hidden space-y-4">
+      
+      <!-- Top Govt Header -->
+      <div class="text-center pb-3 border-b border-slate-200">
+        <div class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Government of India • e-NAM Network</div>
+        <h3 class="font-extrabold text-slate-900 text-base mt-0.5">KisanSetu Digital Operational Pass</h3>
+        <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full inline-block mt-1">
+          Cryptographically Signed • 2026-2027
+        </span>
+      </div>
+
+      <!-- Pass Card Body -->
+      <div class="bg-gradient-to-b from-emerald-50 to-white p-4 rounded-2xl border border-emerald-200 text-center space-y-3">
+        
+        <div class="w-16 h-16 rounded-2xl bg-emerald-700 text-white flex items-center justify-center text-3xl font-bold mx-auto shadow-md" id="pass-avatar">
+          🌾
+        </div>
+
+        <div>
+          <h4 id="pass-name" class="font-extrabold text-slate-900 text-lg leading-tight">Ramesh Patel</h4>
+          <span id="pass-role" class="text-xs font-semibold text-emerald-700 block mt-0.5">Verified Kisan • Cluster Head</span>
+          <span id="pass-id" class="text-[11px] font-mono text-slate-500 block mt-1">ID: MH-NSK-4402</span>
+        </div>
+
+        <!-- Simulated Authentic QR Code -->
+        <div class="bg-white p-3 rounded-2xl border border-slate-200 inline-block shadow-inner">
+          <svg class="w-32 h-32 mx-auto" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" fill="white"/>
+            <!-- QR Corner Squares -->
+            <rect x="10" y="10" width="24" height="24" rx="4" fill="#0f172a"/>
+            <rect x="15" y="15" width="14" height="14" rx="2" fill="white"/>
+            <rect x="18" y="18" width="8" height="8" rx="1" fill="#059669"/>
+            
+            <rect x="66" y="10" width="24" height="24" rx="4" fill="#0f172a"/>
+            <rect x="71" y="15" width="14" height="14" rx="2" fill="white"/>
+            <rect x="74" y="18" width="8" height="8" rx="1" fill="#059669"/>
+            
+            <rect x="10" y="66" width="24" height="24" rx="4" fill="#0f172a"/>
+            <rect x="15" y="71" width="14" height="14" rx="2" fill="white"/>
+            <rect x="18" y="74" width="8" height="8" rx="1" fill="#059669"/>
+
+            <!-- Simulated QR pattern elements -->
+            <rect x="42" y="14" width="6" height="6" fill="#0f172a"/>
+            <rect x="52" y="14" width="6" height="12" fill="#059669"/>
+            <rect x="42" y="26" width="12" height="6" fill="#0f172a"/>
+            
+            <rect x="14" y="42" width="12" height="6" fill="#059669"/>
+            <rect x="30" y="42" width="6" height="16" fill="#0f172a"/>
+            <rect x="42" y="42" width="16" height="16" rx="2" fill="#059669"/>
+            <rect x="64" y="42" width="10" height="6" fill="#0f172a"/>
+            <rect x="80" y="42" width="6" height="12" fill="#059669"/>
+            
+            <rect x="42" y="66" width="8" height="8" fill="#0f172a"/>
+            <rect x="56" y="66" width="12" height="6" fill="#059669"/>
+            <rect x="74" y="66" width="12" height="12" fill="#0f172a"/>
+            <rect x="42" y="80" width="18" height="6" fill="#059669"/>
+            <rect x="66" y="84" width="8" height="6" fill="#0f172a"/>
+            <rect x="80" y="80" width="6" height="10" fill="#059669"/>
+          </svg>
+          <div class="text-[9px] font-mono text-slate-400 mt-1">SCAN FOR APMC VERIFICATION</div>
+        </div>
+
+        <div class="text-[11px] text-slate-500 font-medium">
+          Authorized for Direct Mandi Dispatch, Inter-State Freight Transit & Escrow Settlements.
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button type="button" class="w-full py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl shadow-xs transition"
+          onclick="alert('Digital Card saved! Offline verification token active.'); document.getElementById('digital-pass-modal').classList.add('hidden');">
+          Download PDF / PNG
+        </button>
+        <button type="button" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition"
+          onclick="document.getElementById('digital-pass-modal').classList.add('hidden')">
+          Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= FORGOT PASSWORD MODAL ================= -->
+  <div id="forgot-password-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-slate-100 relative animate-in fade-in zoom-in-95 duration-150">
+      <!-- Close Button -->
+      <button type="button" id="close-forgot-password-btn" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 transition p-1.5 rounded-full hover:bg-slate-100 cursor-pointer">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3.5 mb-4">
+        <div class="w-11 h-11 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
+          <i data-lucide="key-round" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="text-base font-bold text-slate-900">Reset Account Password</h3>
+          <p class="text-xs text-slate-500">Recover access to your KisanSetu portal account</p>
+        </div>
+      </div>
+
+      <!-- Alert message box -->
+      <div id="forgot-password-alert" class="hidden p-3 rounded-xl text-xs font-medium border mb-4"></div>
+
+      <!-- Reset Password Form -->
+      <form id="forgot-password-form" class="space-y-3.5">
+        <div>
+          <label for="forgot-identifier" class="block text-xs font-bold text-slate-700 mb-1">
+            Registered Email Address or 10-Digit Mobile:
+          </label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+            </div>
+            <input type="text" id="forgot-identifier" required class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition" placeholder="e.g. farmer@kisansetu.in or 9423188901">
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label for="forgot-otp" class="block text-xs font-bold text-slate-700">
+              Security OTP Verification:
+            </label>
+            <button type="button" id="send-forgot-otp-btn" class="text-xs font-semibold text-emerald-700 hover:text-emerald-800 hover:underline cursor-pointer">
+              Send OTP
+            </button>
+          </div>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <i data-lucide="shield-check" class="w-4 h-4"></i>
+            </div>
+            <input type="text" id="forgot-otp" maxlength="6" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition font-mono tracking-widest" placeholder="Enter 6-digit OTP (e.g. 529144)">
+          </div>
+          <p id="forgot-otp-hint" class="hidden mt-1.5 text-[11px] text-emerald-800 bg-emerald-50 border border-emerald-200 p-2 rounded-xl flex items-center gap-1.5"></p>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label for="forgot-new-password" class="block text-xs font-bold text-slate-700">
+              New Account Password:
+            </label>
+            <span class="text-[11px] text-slate-400">Min 6 characters</span>
+          </div>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <i data-lucide="lock" class="w-4 h-4"></i>
+            </div>
+            <input type="password" id="forgot-new-password" required minlength="6" class="w-full pl-10 pr-10 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition" placeholder="Enter new password">
+            <button type="button" id="toggle-forgot-password-btn" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 transition cursor-pointer">
+              <i data-lucide="eye" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <label for="forgot-confirm-password" class="block text-xs font-bold text-slate-700 mb-1">
+            Confirm New Password:
+          </label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <i data-lucide="check-circle" class="w-4 h-4"></i>
+            </div>
+            <input type="password" id="forgot-confirm-password" required minlength="6" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition" placeholder="Re-enter new password">
+          </div>
+        </div>
+
+        <div class="pt-2 flex gap-2.5">
+          <button type="button" id="cancel-forgot-password-btn" class="w-1/3 py-2.5 px-3 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold text-xs transition cursor-pointer">
+            Cancel
+          </button>
+          <button type="submit" id="submit-forgot-password-btn" class="w-2/3 py-2.5 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2 cursor-pointer">
+            <i data-lucide="check" class="w-4 h-4"></i>
+            <span>Update Password</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= 1. OTP VERIFICATION MODAL (LIVE MOBILE AUTH) ================= -->
+  <div id="otp-verification-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-slate-200 relative animate-in fade-in zoom-in-95 duration-200">
+      <!-- Close Button -->
+      <button type="button" id="close-otp-modal-btn" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 transition p-1.5 rounded-full hover:bg-slate-100 cursor-pointer">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3.5 mb-4">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0 shadow-xs">
+          <i data-lucide="smartphone" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 class="text-base font-extrabold text-slate-900">Verify Mobile Number</h3>
+          <p class="text-xs text-slate-500">Live 6-Digit OTP Authentication</p>
+        </div>
+      </div>
+
+      <!-- Target Phone Display -->
+      <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <i data-lucide="phone" class="w-4 h-4 text-slate-400"></i>
+          <span class="text-xs text-slate-500">Code sent to:</span>
+          <span id="otp-target-phone-display" class="font-bold text-slate-900 text-xs tracking-wider">+91 ••••••••••</span>
+        </div>
+        <button type="button" id="otp-change-number-btn" class="text-xs font-bold text-emerald-700 hover:text-emerald-800 hover:underline cursor-pointer">
+          Change
+        </button>
+      </div>
+
+      <!-- Live Simulated SMS Gateway Notification Banner (Hidden per user request) -->
+      <div id="otp-sms-banner" class="hidden mb-4 p-3 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-900 text-xs font-medium space-y-2">
+        <div class="flex items-center gap-1.5 font-bold text-emerald-800">
+          <i data-lucide="message-square-code" class="w-4 h-4 text-emerald-600"></i>
+          <span>Live SMS Gateway Dispatch</span>
+          <span class="ml-auto text-[10px] bg-emerald-200/80 px-2 py-0.5 rounded-full text-emerald-800 font-bold">Instant Delivery</span>
+        </div>
+        <p id="otp-sms-message" class="text-[11px] font-mono text-emerald-900">
+          Your KisanSetu verification OTP is <b id="otp-sms-code" class="text-emerald-950 font-black text-sm tracking-widest bg-emerald-200/60 px-1.5 py-0.5 rounded border border-emerald-300 cursor-pointer" title="Click to auto-fill">------</b>. Valid for 5 minutes.
+        </p>
+        <button type="button" id="otp-quick-fill-btn" class="w-full py-1.5 px-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-[11px] flex items-center justify-center gap-1.5 shadow-xs transition cursor-pointer">
+          <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+          <span>1-Click Auto-Fill Code into Box</span>
+        </button>
+      </div>
+
+      <!-- OTP Alert Banner -->
+      <div id="otp-alert-banner" class="hidden p-3 rounded-xl text-xs font-medium border mb-4"></div>
+
+      <!-- Form -->
+      <form id="otp-verification-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-2 text-center uppercase tracking-wider">
+            Enter 6-Digit Verification Code:
+          </label>
+          <div class="relative">
+            <input type="text" id="otp-code-input" maxlength="6" inputmode="numeric" required placeholder="• • • • • •"
+              class="w-full py-3 bg-slate-50 border-2 border-emerald-500/40 rounded-2xl text-center text-2xl font-black text-slate-900 tracking-[0.5em] focus:outline-none focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-600 focus:bg-white transition font-mono shadow-inner">
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs pt-1 text-slate-500">
+          <span id="otp-timer-display" class="flex items-center gap-1 font-medium">
+            <i data-lucide="clock" class="w-3.5 h-3.5"></i> Resend code in <b id="otp-countdown">45</b>s
+          </span>
+          <button type="button" id="otp-resend-btn" disabled class="font-bold text-slate-400 cursor-not-allowed transition">
+            Resend OTP
+          </button>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit" id="otp-verify-submit-btn" class="w-full py-3.5 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer active:scale-98">
+            <i data-lucide="shield-check" class="w-4 h-4"></i>
+            <span>Verify & Complete Registration</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= 2. FARMER COUNTER-OFFER MODAL ================= -->
+  <div id="farmer-counter-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-slate-200 relative animate-in fade-in zoom-in-95 duration-200">
+      <button type="button" id="close-farmer-counter-modal-btn" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 transition p-1.5 rounded-full hover:bg-slate-100 cursor-pointer">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3.5 mb-4">
+        <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center flex-shrink-0 shadow-xs">
+          <i data-lucide="arrow-left-right" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 class="text-base font-extrabold text-slate-900">Propose Farmer Counter-Offer</h3>
+          <p class="text-xs text-slate-500">Negotiate directly with verified buyer before dispatch</p>
+        </div>
+      </div>
+
+      <!-- Crop & Order Details Card -->
+      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 mb-4 space-y-2 text-xs">
+        <div class="flex justify-between items-center">
+          <span class="font-bold text-slate-900 text-sm" id="fcounter-crop-name">Sharbati Golden Wheat</span>
+          <span class="font-mono text-slate-500" id="fcounter-order-id">#ORD-901</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2 pt-1 border-t border-slate-200">
+          <div>
+            <span class="text-slate-400 block">Buyer:</span>
+            <span class="font-semibold text-slate-800" id="fcounter-buyer-name">Priya Sharma</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block">Quantity:</span>
+            <span class="font-semibold text-slate-800" id="fcounter-quantity-unit">20 Quintals</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block">Your Listed Price:</span>
+            <span class="font-semibold text-emerald-700" id="fcounter-listed-price">₹2,650 / Qtl</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block">Buyer Offered:</span>
+            <span class="font-semibold text-amber-700" id="fcounter-offered-price">₹2,600 / Qtl</span>
+          </div>
+        </div>
+      </div>
+
+      <form id="farmer-counter-form" class="space-y-4">
+        <input type="hidden" id="fcounter-order-id-val">
+        <div>
+          <label for="fcounter-price-input" class="block text-xs font-bold text-slate-700 mb-1">
+            Your Counter-Offer Price per Unit (₹): *
+          </label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 font-bold">
+              ₹
+            </div>
+            <input type="number" id="fcounter-price-input" required min="1" step="1"
+              class="w-full pl-8 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition"
+              placeholder="e.g. 2625">
+          </div>
+        </div>
+
+        <!-- Live Math Reconcile Preview -->
+        <div class="bg-amber-50/60 p-3.5 rounded-2xl border border-amber-200 text-xs space-y-1.5">
+          <div class="flex justify-between text-slate-600">
+            <span>Produce Subtotal:</span>
+            <span class="font-bold text-slate-900" id="fcounter-calc-subtotal">₹0</span>
+          </div>
+          <div class="flex justify-between text-slate-500 text-[11px]">
+            <span>Mandi Cess (1.5%) + Platform Fee (1.0%):</span>
+            <span id="fcounter-calc-fees">₹0</span>
+          </div>
+          <div class="flex justify-between text-slate-500 text-[11px]">
+            <span>Freight Logistics Tariff:</span>
+            <span>₹450</span>
+          </div>
+          <div class="flex justify-between text-slate-900 font-extrabold text-sm pt-1 border-t border-amber-200">
+            <span>Buyer Total Payable (Escrow):</span>
+            <span class="text-emerald-700" id="fcounter-calc-total">₹0</span>
+          </div>
+        </div>
+
+        <div>
+          <label for="fcounter-notes-input" class="block text-xs font-bold text-slate-700 mb-1">
+            Message / Specifications Note to Buyer (Optional):
+          </label>
+          <textarea id="fcounter-notes-input" rows="2"
+            class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition"
+            placeholder="e.g. Moisture-sealed 50kg packaging included. Best farm-gate price possible."></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-2.5 pt-2">
+          <button type="button" id="cancel-farmer-counter-btn" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-100 text-xs font-semibold transition cursor-pointer">
+            Cancel
+          </button>
+          <button type="submit" class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5 cursor-pointer">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            <span>Send Counter-Offer to Buyer</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= 3. CONSUMER COUNTER-OFFER MODAL ================= -->
+  <div id="consumer-counter-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-slate-200 relative animate-in fade-in zoom-in-95 duration-200">
+      <button type="button" id="close-consumer-counter-modal-btn" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 transition p-1.5 rounded-full hover:bg-slate-100 cursor-pointer">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3.5 mb-4">
+        <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center flex-shrink-0 shadow-xs">
+          <i data-lucide="message-square-plus" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 class="text-base font-extrabold text-slate-900">Propose Revised Offer</h3>
+          <p class="text-xs text-slate-500">Negotiate counter-price with Farmer</p>
+        </div>
+      </div>
+
+      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 mb-4 space-y-2 text-xs">
+        <div class="flex justify-between items-center">
+          <span class="font-bold text-slate-900 text-sm" id="ccounter-crop-name">Sharbati Golden Wheat</span>
+          <span class="font-mono text-slate-500" id="ccounter-order-id">#ORD-901</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2 pt-1 border-t border-slate-200">
+          <div>
+            <span class="text-slate-400 block">Farmer:</span>
+            <span class="font-semibold text-slate-800" id="ccounter-farmer-name">Ramesh Patel</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block">Quantity:</span>
+            <span class="font-semibold text-slate-800" id="ccounter-quantity-unit">20 Quintals</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block">Farmer Counter Price:</span>
+            <span class="font-semibold text-amber-700" id="ccounter-farmer-counter">₹2,625 / Qtl</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block">Your Prior Offer:</span>
+            <span class="font-semibold text-slate-600" id="ccounter-prior-offer">₹2,600 / Qtl</span>
+          </div>
+        </div>
+      </div>
+
+      <form id="consumer-counter-form" class="space-y-4">
+        <input type="hidden" id="ccounter-order-id-val">
+        <div>
+          <label for="ccounter-price-input" class="block text-xs font-bold text-slate-700 mb-1">
+            Your Revised Counter Price per Unit (₹): *
+          </label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 font-bold">
+              ₹
+            </div>
+            <input type="number" id="ccounter-price-input" required min="1" step="1"
+              class="w-full pl-8 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition"
+              placeholder="e.g. 2615">
+          </div>
+        </div>
+
+        <!-- Live Math Reconcile Preview -->
+        <div class="bg-indigo-50/60 p-3.5 rounded-2xl border border-indigo-200 text-xs space-y-1.5">
+          <div class="flex justify-between text-slate-600">
+            <span>Revised Subtotal:</span>
+            <span class="font-bold text-slate-900" id="ccounter-calc-subtotal">₹0</span>
+          </div>
+          <div class="flex justify-between text-slate-500 text-[11px]">
+            <span>Mandi Cess (1.5%) + Platform Fee (1.0%):</span>
+            <span id="ccounter-calc-fees">₹0</span>
+          </div>
+          <div class="flex justify-between text-slate-500 text-[11px]">
+            <span>Logistics Freight:</span>
+            <span>₹450</span>
+          </div>
+          <div class="flex justify-between text-slate-900 font-extrabold text-sm pt-1 border-t border-indigo-200">
+            <span>Revised Total Payable (Escrow):</span>
+            <span class="text-emerald-700" id="ccounter-calc-total">₹0</span>
+          </div>
+        </div>
+
+        <div>
+          <label for="ccounter-notes-input" class="block text-xs font-bold text-slate-700 mb-1">
+            Note to Farmer (Optional):
+          </label>
+          <textarea id="ccounter-notes-input" rows="2"
+            class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition"
+            placeholder="e.g. Can meet in the middle at ₹2,615 for prompt payment and immediate dispatch."></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-2.5 pt-2">
+          <button type="button" id="cancel-consumer-counter-btn" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-100 text-xs font-semibold transition cursor-pointer">
+            Cancel
+          </button>
+          <button type="submit" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5 cursor-pointer">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            <span>Submit Revised Counter-Offer</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= 4. SYSTEM ALERT & CONFIRMATION MODAL ================= -->
+  <div id="system-feedback-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm sm:max-w-md w-full p-6 shadow-2xl border border-slate-200 relative text-center animate-in fade-in zoom-in-95 duration-150">
+      <div id="system-feedback-icon-wrap" class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-3.5 shadow-xs">
+        <i id="system-feedback-icon" data-lucide="check-circle-2" class="w-7 h-7"></i>
+      </div>
+      <h3 id="system-feedback-title" class="text-base font-extrabold text-slate-900 mb-1">System Notification</h3>
+      <p id="system-feedback-message" class="text-xs text-slate-600 leading-relaxed mb-4 whitespace-pre-line"></p>
+      <input type="text" id="system-feedback-input" class="hidden w-full px-4 py-2.5 mb-4 border border-slate-200 rounded-xl text-center text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-slate-50">
+      <div class="flex items-center justify-center gap-3" id="system-feedback-actions">
+        <button type="button" id="system-feedback-cancel-btn" class="hidden px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">
+          Cancel
+        </button>
+        <button type="button" id="system-feedback-ok-btn" class="px-6 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold shadow-md transition cursor-pointer">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+  <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-emerald-800 via-emerald-700 to-green-600 text-white flex items-center justify-center p-0.5 flex-shrink-0 shadow-xs ring-1 ring-white/20">
+          <svg class="w-4 h-4" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="KisanSetu Footer Emblem">
+            <defs>
+              <linearGradient id="ksWheatGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fef08a"/>
+                <stop offset="60%" stop-color="#fde047"/>
+                <stop offset="100%" stop-color="#f59e0b"/>
+              </linearGradient>
+              <linearGradient id="ksLeafGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ecfdf5"/>
+                <stop offset="50%" stop-color="#a7f3d0"/>
+                <stop offset="100%" stop-color="#34d399"/>
+              </linearGradient>
+            </defs>
+            <path d="M18 3.5C16.8 5.2 16.8 7.4 18 9C19.2 7.4 19.2 5.2 18 3.5Z" fill="url(#ksWheatGradFooter)"/>
+            <path d="M14.5 7.6C12.8 8.6 12.4 10.8 13.9 12.2C15.6 11.2 16 9.1 14.5 7.6Z" fill="url(#ksWheatGradFooter)"/>
+            <path d="M21.5 7.6C23.2 8.6 23.6 10.8 22.1 12.2C20.4 11.2 20 9.1 21.5 7.6Z" fill="url(#ksWheatGradFooter)"/>
+            <path d="M18 9V23" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M18 19C13 14.5 8.5 15.5 7.5 11.5C12 11.5 15 14.5 18 17.2Z" fill="url(#ksLeafGradFooter)"/>
+            <path d="M18 17C23 12.5 27.5 13.5 28.5 9.5C24 9.5 21 12.5 18 15.2Z" fill="url(#ksLeafGradFooter)"/>
+            <path d="M6 28C11 21.5 25 21.5 30 28" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M9.5 28.5H26.5" stroke="#fde047" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="font-bold text-slate-800">KisanSetu</span>
+        <span>•</span>
+        <span>SIH 2026 Direct Agricultural Commerce & Logistics Platform</span>
+      </div>
+      <div>
+        <span>Empowering Indian Cultivators • Transparent Mandi & MSP Benchmarks</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/analytics-data.js"></script>
+  <script src="js/voice.js"></script>
+  <script src="js/farmer.js"></script>
+  <script src="js/consumer.js"></script>
+  <script src="js/driver.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
+
