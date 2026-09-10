@@ -178,28 +178,30 @@ pip install -r requirements.txt
 
 ## 12. Run
 
-### Quick Start (Local SQLite)
+### Quick Start (Local Flask Server)
 
-Run the entry point script from the repository root:
-
-```bash
-python src/main.py
-```
-
-Or run the server script directly:
+Run the Flask application from the repository root:
 
 ```bash
-python src/server.py 8080
+python app.py
 ```
 
 Open your browser at **`http://localhost:8080`**.
+
+### Production Run (Gunicorn / Render)
+
+For production Linux environments or Render deployment:
+
+```bash
+gunicorn app:app
+```
 
 ### Verify Database Integrity
 
 To verify database tables, records, and relational schema health:
 
 ```bash
-python src/setup_mysql.py
+python setup_mysql.py
 ```
 
 ### Running with MySQL (Optional Production Mode)
