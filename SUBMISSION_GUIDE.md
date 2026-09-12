@@ -1,7 +1,5 @@
 # SIH 2026 Submission Guide
 
-## Required Repository Content
-
 ## Required repository content
 
 - Actual source code is present.
