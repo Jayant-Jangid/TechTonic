@@ -1,11 +1,21 @@
 # Project Screenshots
 
-1. [Login Dashboard](image.png)
+## Login Dashboard
 
-2. ![Farmer Dashboard](image-1.png)
+![Login Dashboard](./image.png)
 
-3. ![Farmer Order Inbox](image-2.png)
+## Farmer Dashboard
 
-4. ![Consumer Dashboard](image-3.png)
+![Farmer Dashboard](./image-1.png)
 
-5. ![Truck Driver Dashboard](image-4.png)
+## Farmer Order Inbox
+
+![Farmer Order Inbox](./image-2.png)
+
+## Consumer Dashboard
+
+![Consumer Dashboard](./image-3.png)
+
+## Truck Driver Dashboard
+
+![Truck Driver Dashboard](./image-4.png)
