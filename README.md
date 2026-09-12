@@ -178,52 +178,7 @@ pip install -r requirements.txt
 
 ---
 
-## 11. Run
-
-### Quick Start (Local Flask Server)
-
-Run the Flask application from the repository root:
-
-```bash
-python app.py
-```
-
-Open your browser at **`http://localhost:8080`**.
-
-### Production Run (Gunicorn / Render)
-
-For production Linux environments or Render deployment:
-
-```bash
-gunicorn app:app
-```
-
-### Verify Database Integrity
-
-To verify database tables, records, and relational schema health:
-
-```bash
-python setup_mysql.py
-```
-
-### Running with MySQL (Optional Production Mode)
-
-Set environment variables before running:
-
-```bash
-export MYSQL_HOST=localhost
-export MYSQL_PORT=3306
-export MYSQL_USER=root
-export MYSQL_PASSWORD=your_password
-export MYSQL_DATABASE=kisansetu
-
-python src/setup_mysql.py
-python src/main.py
-```
-
----
-
-## 12. Team Members
+## 11. Team Members
 
 - **Team Name:** TechTonic
 - **Member 1:** Vaishnavi Jha
@@ -235,7 +190,7 @@ python src/main.py
 
 ---
 
-## 13. Future Scope
+## 12. Future Scope
 
 - **Smart Contract Escrow:** Integration with automated payment escrow released upon verified freight delivery.
 - **AI Crop Quality Assessment:** Computer vision grading using camera photos to verify moisture content, discoloration, and grain size.
