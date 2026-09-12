@@ -1,5 +1,23 @@
 # SIH 2026 Submission Guide
 
+## Required Repository Content
+
+## Required repository content
+
+- Actual source code is present.
+- `README.md` explains the project clearly.
+- PS ID and PS title are included.
+- Problem statement and proposed solution are explained.
+- Key features are listed.
+- Technology stack is listed.
+- Setup and run instructions work.
+- Team members and roles are mentioned.
+- Important screenshots or hardware/prototype photos are included.
+- Final PPT/presentation is placed in `submission/` whenever practical.
+- If the PPT is too large for GitHub, an accessible Google Drive/OneDrive viewer link is added to `submission/PRESENTATION.md`.
+- Demo video link is added to `submission/DEMO.md` if available. This is optional.
+- Repository is accessible to reviewers.
+
 ## Recommended structure
 
 ```text
