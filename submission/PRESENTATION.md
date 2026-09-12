@@ -1,3 +1,3 @@
 # Project Presentation
 
-[TechTonic PPT](https://drive.google.com/drive/folders/191lET9-F1CT-1Ix8XF7h80Kkf9v9NN62?usp=sharing)
+[TechTonic PPT](https://drive.google.com/drive/folders/1RwEq-Loz8wBW1w-drM0Xo7Yatt4MaPRP)
