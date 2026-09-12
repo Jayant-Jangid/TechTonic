@@ -7,16 +7,26 @@ An integrated digital ecosystem empowering Indian farmers through transparent MS
 ## 1. Project Information
 
 - **Project Title:** KisanSetu – National Agricultural Commerce & Logistics Platform
-- **PS ID:** SIH2026-AGRI-001 *(Update with your team's assigned PS ID)*
-- **PS Title:** Direct Farmer-to-Consumer Market Linkage and Rural Logistics System
+- **PS ID:** 26033
+- **PS Title:** Multiple intermediaries reduce farmers earnings and increase consumer prices
 - **Category:** Software
-- **Theme:** Smart Agriculture / Rural Development
+- **Theme:** Agriculture, FoodTech & Rural Development
 
 ---
 
 ## 2. Problem Statement
 
-Indian agricultural producers frequently face distress selling due to information asymmetry, multiple layers of intermediaries taking significant commission cuts, and delayed payments at local mandis. Small and marginal farmers lack visibility into actual wholesale market demand, Government Minimum Support Price (MSP) spreads, and reliable rural transport networks to deliver harvests directly to bulk buyers and institutional consumers.
+Expected Solution: Create a digital marketplace that:
+
+• Connects farmers/FPOs directly with consumers and bulk buyers.
+• Provides logistics support.
+• Uses AI for demand forecasting and route optimization.
+
+Benefits:
+
+• Better prices for farmers.
+• Lower prices for consumers.
+• Reduced supply chain inefficiencies.
 
 ---
 
@@ -34,7 +44,6 @@ Indian agricultural producers frequently face distress selling due to informatio
 ## 4. Key Features
 
 - **Farmer Portal:** Produce cataloging, quality grade classification, harvest availability scheduling, and real-time earnings ledger.
-- **Multilingual Voice Assistant:** Hands-free voice interface for adding listings and navigating features.
 - **Wholesale & Retail Marketplace:** Crop filtering by commodity, harvest date, location, and verified farmer badges.
 - **Counter-Offer Engine:** Bilateral transparent price negotiations between buyers and farmers.
 - **Driver & Freight Module:** Route navigation, load assignment, OTP-based pickup validation, and delivery fulfillment.
@@ -134,21 +143,13 @@ SIH2026/
 
 ---
 
-## 8. Final Presentation
-
-Keep your final SIH presentation in the repository whenever practical.
-
-See [submission/PRESENTATION.md](submission/PRESENTATION.md) for instructions and format.
-
----
-
-## 9. Demo Video
+## 8. Demo Video
 
 Add the YouTube / Google Drive walkthrough link in [submission/DEMO.md](submission/DEMO.md).
 
 ---
 
-## 10. Screenshots / Prototype Photos
+## 9. Screenshots / Prototype Photos
 
 Store screenshots of key workflows in:
 
@@ -158,7 +159,7 @@ See [assets/screenshots/README.md](assets/screenshots/README.md) for suggested n
 
 ---
 
-## 11. Installation
+## 10. Installation
 
 ### Prerequisites
 - Python 3.9 or higher
@@ -176,7 +177,7 @@ pip install -r requirements.txt
 
 ---
 
-## 12. Run
+## 11. Run
 
 ### Quick Start (Local Flask Server)
 
@@ -221,21 +222,19 @@ python src/main.py
 
 ---
 
-## 13. Team Members
+## 12. Team Members
 
-*(Fill in your team details before final submission)*
-
-- **Team Name:** [Your Team Name]
-- **Team Leader:** [Name / Email / GitHub]
-- **Member 2:** [Name / Email]
-- **Member 3:** [Name / Email]
-- **Member 4:** [Name / Email]
-- **Member 5:** [Name / Email]
-- **Member 6:** [Name / Email]
+- **Team Name:** TechTonic
+- **Member 1:** Vaishnavi Jha
+- **Member 2:** Dhruv Khanna
+- **Member 3:** Divyanshu Sharma
+- **Member 4:** Arnav Gupta
+- **Member 5:** MD Ubesh
+- **Member 6:** Jayant Jangid
 
 ---
 
-## 14. Future Scope
+## 13. Future Scope
 
 - **Smart Contract Escrow:** Integration with automated payment escrow released upon verified freight delivery.
 - **AI Crop Quality Assessment:** Computer vision grading using camera photos to verify moisture content, discoloration, and grain size.
@@ -244,6 +243,6 @@ python src/main.py
 
 ---
 
-## Important
+## 14. Deployed Website
 
-Before submission, ensure the repository is public and accessible to reviewers. Do **not** upload passwords, API tokens, `.env` files containing production secrets, or confidential keys.
+[KisanSetu - National Agircultural Commerce and Logistics Portal](https://techtonic-tt2k.onrender.com)

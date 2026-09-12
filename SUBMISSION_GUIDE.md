@@ -1,23 +1,5 @@
 # SIH 2026 Submission Guide
 
-Use this checklist before sharing your GitHub repository link.
-
-## Required repository content
-
-- [x] Actual source code is present in `src/`.
-- [x] `README.md` explains the project clearly.
-- [ ] PS ID and PS title are updated with your team's assigned details.
-- [x] Problem statement and proposed solution are explained.
-- [x] Key features are listed.
-- [x] Technology stack is listed.
-- [x] Setup and run instructions work.
-- [ ] Team members and roles are filled in `README.md`.
-- [ ] Important screenshots or hardware/prototype photos are added to `assets/screenshots/`.
-- [ ] Final PPT/presentation is placed in `submission/` whenever practical.
-- [ ] If the PPT is too large for GitHub, an accessible Google Drive/OneDrive viewer link is added to `submission/PRESENTATION.md`.
-- [ ] Demo video link is added to `submission/DEMO.md` if available. This is optional.
-- [ ] Repository is accessible to reviewers (public or access granted).
-
 ## Recommended structure
 
 ```text
