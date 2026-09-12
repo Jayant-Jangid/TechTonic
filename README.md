@@ -11,6 +11,7 @@ An integrated digital ecosystem empowering Indian farmers through transparent MS
 - **PS Title:** Multiple intermediaries reduce farmers earnings and increase consumer prices
 - **Category:** Software
 - **Theme:** Agriculture, FoodTech & Rural Development
+- **Deployed Website:** [KisanSetu - National Agircultural Commerce and Logistics Portal](https://techtonic-tt2k.onrender.com)
 
 ---
 
@@ -242,7 +243,3 @@ python src/main.py
 - **WhatsApp & SMS Gateway:** SMS / IVR bidding alerts for farmers without constant internet connectivity.
 
 ---
-
-## 14. Deployed Website
-
-[KisanSetu - National Agircultural Commerce and Logistics Portal](https://techtonic-tt2k.onrender.com)
